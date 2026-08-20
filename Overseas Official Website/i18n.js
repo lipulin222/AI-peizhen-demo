@@ -1,0 +1,1415 @@
+/* =========================================================================
+ * 卓正医疗 Demo - 国际化字典
+ * 支持语言：中文(zh) / 英文(en) / 日文(ja)
+ * 页面元素通过 data-i18n / data-i18n-html / data-i18n-placeholder 标记
+ * 动态内容通过 window.__t(key) 获取当前语言文本
+ * ========================================================================= */
+(function (global) {
+  "use strict";
+
+  var I18N = {
+    zh: {
+      "topbar.hotline": "24小时多语言服务热线：400-888-XXXX",
+      "topbar.lang": "当前语言：",
+      "topbar.switch": "切换",
+      "topbar.chinese": "中文",
+
+      "nav.home": "首页",
+      "nav.about": "关于我们",
+      "nav.services": "医疗服务",
+      "nav.network": "诊所网络",
+      "nav.insurance": "保险合作",
+      "nav.contact": "联系我们",
+      "nav.register": "注册",
+      "nav.menu": "打开菜单",
+
+      "carousel.1.title": "专业认证的医疗资质",
+      "carousel.1.desc": "所有合作医生均持有正规执业资格，诊所通过国际医疗质量认证，让您安心就诊。",
+      "carousel.2.title": "循证医学为基础的诊疗",
+      "carousel.2.desc": "严格遵循国际临床指南，以最新循证医学证据为诊疗依据，拒绝过度医疗。",
+      "carousel.3.title": "坚持高性价比的优质服务",
+      "carousel.3.desc": "合理透明的收费标准，让您以公道价格享受国际水准的医疗服务。",
+      "carousel.4.title": "AI陪诊解决语言障碍",
+      "carousel.4.desc": "智能 AI 翻译全程陪同就诊，实时多语种沟通，让外籍患者就医无忧。",
+      "carousel.5.title": "支持国际信用卡支付体系",
+      "carousel.5.desc": "支持 Visa、Mastercard 等主流国际信用卡，结算便捷，账单清晰可查。",
+      "carousel.6.title": "支持对接国际商业保险",
+      "carousel.6.desc": "与全球主要商业医疗保险公司直付合作，就诊免垫付，流程更顺心。",
+      "carousel.7.title": "提供多语言医疗文书",
+      "carousel.7.desc": "诊断报告、处方、病历均可输出中英日韩多语种版本，方便跨境就医与保险理赔。",
+      "carousel.prev": "上一张",
+      "carousel.next": "下一张",
+
+      "hero.title1": "为外籍人士提供优质便捷的",
+      "hero.title2": "医疗服务",
+      "hero.cta": "立即预约",
+
+      "about.eyebrow": "关于我们",
+      "about.title1": "以循证医学为核心理念的",
+      "about.title2": "国际化医疗集团",
+      "about.text": "自2015年成立以来，我们已在全国15个城市建立直营诊所网络，配备中、英、日、韩等多语种医生团队，结合国际诊疗规范与本地医疗资源，为您提供从家庭医生到专科转诊、医疗转运的一站式服务。",
+      "about.stat1": "直营诊所",
+      "about.stat2": "覆盖城市",
+      "about.stat3": "循证医学医生",
+      "about.stat4": "年诊疗人次",
+
+      "services.eyebrow": "我们的服务",
+      "services.title": "全方位医疗健康服务",
+      "services.sub": "从日常诊疗到专科转诊，从健康筛查到企业健康，覆盖您和家人的各类医疗需求。",
+      "service.1.title": "全科与家庭医学",
+      "service.1.desc": "为个人和家庭提供持续性健康管理、常见病诊疗及慢性病随访。",
+      "service.2.title": "儿科与儿童健康",
+      "service.2.desc": "新生儿到青少年的全程健康管理，疫苗接种、生长发育评估与儿童常见病诊疗。",
+      "service.3.title": "健康筛查与预防医学",
+      "service.3.desc": "个性化体检方案，结合国际指南的早癌筛查、心血管风险评估与疫苗咨询。",
+      "service.4.title": "口腔医疗服务",
+      "service.4.desc": "口腔检查、洁牙、补牙、正畸咨询与种植牙转诊，提供舒适的就诊体验。",
+      "service.5.title": "医疗美容",
+      "service.5.desc": "皮肤管理、注射美容、激光美肤、抗衰等，由持证美容医生提供个性化医美方案。",
+      "service.6.title": "专科转诊服务",
+      "service.6.desc": "对接三甲医院优质专科资源，提供预约、陪诊与多语种就医翻译支持。",
+
+      "network.eyebrow": "诊所网络",
+      "network.title": "遍布全国及海外的合作诊所",
+      "network.sub": "卓正医疗已覆盖国内外 14 个城市，为国内外客户提供高品质医疗服务。",
+      "city.1.name": "北京", "city.1.landmark": "天坛",
+      "city.2.name": "上海", "city.2.landmark": "东方明珠",
+      "city.3.name": "广州", "city.3.landmark": "广州塔",
+      "city.4.name": "佛山", "city.4.landmark": "世纪莲",
+      "city.5.name": "深圳", "city.5.landmark": "平安大厦",
+      "city.6.name": "重庆", "city.6.landmark": "解放碑",
+      "city.7.name": "武汉", "city.7.landmark": "黄鹤楼",
+      "city.8.name": "长沙", "city.8.landmark": "国际金融中心",
+      "city.9.name": "成都", "city.9.landmark": "宽窄巷子",
+      "city.10.name": "苏州", "city.10.landmark": "苏州之门",
+      "city.11.name": "杭州", "city.11.landmark": "三潭印月",
+      "city.12.name": "西安", "city.12.landmark": "大雁塔",
+      "city.13.name": "新加坡", "city.13.landmark": "鱼尾狮",
+      "city.14.name": "吉隆坡", "city.14.landmark": "双子塔",
+
+      "insurance.eyebrow": "保险合作",
+      "insurance.title1": "国际保险直付",
+      "insurance.title2": "就医更便捷",
+      "insurance.text": "我们与全球主要商业医疗保险公司建立直付合作关系，您无需垫付费用即可享受医疗服务，就诊流程更加顺心便捷。",
+      "insurance.btn": "咨询保险直付",
+      "insurer.1": "MSH 万欣达",
+      "insurer.2": "Bupa 保柏",
+      "insurer.3": "Cigna 招商信诺",
+      "insurer.4": "AXA 安盛",
+      "insurer.5": "Allianz 安联",
+      "insurer.6": "平安健康",
+      "insurer.7": "GBG 环球医疗",
+      "insurer.8": "Aetna 安泰",
+
+      "contact.eyebrow": "联系我们",
+      "contact.title1": "预约或咨询",
+      "contact.title2": "请随时与我们联系",
+      "contact.text": "我们的多语种客服团队将在工作时间内的15分钟内回复您的咨询。",
+      "contact.email": "邮箱",
+      "contact.hotline": "24小时热线",
+      "contact.hq": "总部",
+      "contact.address": "上海市浦东新区世纪大道 100 号",
+      "contact.cta": "立即在线预约",
+
+      "footer.desc": "为在华外籍人士提供专业、便捷的国际化医疗服务。",
+      "footer.company": "公司",
+      "footer.services": "服务",
+      "footer.contact": "联系",
+      "footer.wechat": "微信",
+      "footer.weibo": "微博",
+      "footer.linkedin": "领英",
+      "footer.service1": "全科与家庭医学",
+      "footer.service2": "儿科与儿童健康",
+      "footer.service3": "健康筛查",
+      "footer.service4": "医疗转运",
+      "footer.copyright": "© 2025 卓正医疗. 保留所有权利。",
+      "footer.privacy": "隐私政策",
+      "footer.terms": "服务条款",
+      "footer.backtotop": "返回顶部",
+
+      "ai.label": "AI 陪诊",
+      "ai.title": "AI 陪诊助手",
+      "ai.status": "在线",
+      "ai.welcome": "您好！我是 卓正 AI 陪诊助手，欢迎了解、体验卓正高品质的医疗服务。烦请填写“就诊需求收集表”（耗时约1分钟），便于我更好的了解您的需要，为您服务。",
+      "ai.start": "开始填写就诊需求",
+      "ai.placeholder": "输入您的问题...",
+      "ai.send": "发送",
+      "ai.history.title": "历史就诊记录",
+      "ai.history.label": "就诊记录",
+      "ai.history.patient": "就诊人",
+      "ai.history.plan": "方案",
+      "ai.history.intent": "意向",
+
+      "quiz.title": "外籍患者就诊预约",
+      "quiz.progress": "第 {current} 步 / 共 {total} 步",
+      "quiz.prev": "上一步",
+      "quiz.next": "下一步",
+      "quiz.submit": "提交预约",
+
+      "quiz.q1": "Q1 您的国籍 & 当前所在地？",
+      "quiz.q1.opt1": "海外他国居民",
+      "quiz.q1.opt2": "中国境内常住（持有居留许可）",
+      "quiz.q1.subtitle": "请选择您的国家/地区",
+      "quiz.q1.select": "请选择国家/地区",
+      "quiz.q1.hot": "热门国家：",
+      "quiz.q1.hot1": "美国",
+      "quiz.q1.hot2": "日本",
+      "quiz.q1.hot3": "韩国",
+      "quiz.q1.hot4": "新加坡",
+
+      "quiz.q2": "Q2 您计划以何种方式入境/在华就诊？",
+      "quiz.q2.opt1": "免签入境/144h过境免签（短期旅游顺带治疗）",
+      "quiz.q2.opt2": "旅游签证L签",
+      "quiz.q2.opt3": "私人事务S2签证（现行合规签证类别，适用于来华就医等短期私人事务）",
+      "quiz.q2.opt4": "已在华居住，持有居留许可",
+
+      "quiz.q3": "Q3 您在中国大陆的可停留时长？",
+      "quiz.q3.opt1": "3–7天",
+      "quiz.q3.opt2": "7–15天",
+      "quiz.q3.opt3": "15–30天",
+      "quiz.q3.opt4": "30天以上",
+      "quiz.q3.opt5": "长期在华",
+
+      "quiz.q4": "Q4 您本次想咨询/治疗的具体项目？",
+      "quiz.q4.opt1": "齿科（种植、正畸、洁牙、根管治疗等）",
+      "quiz.q4.opt2": "医学美容（注射美容、光子嫩肤、皮肤管理）",
+      "quiz.q4.opt3": "儿科与儿童健康（疫苗、生长发育评估）",
+      "quiz.q4.opt4": "个性化体检（高端定制体检方案）",
+      "quiz.q4.opt5": "皮肤科（过敏、湿疹、皮肤问题诊疗）",
+      "quiz.q4.opt6": "眼科（视力检查、干眼症治疗）",
+      "quiz.q4.opt7": "耳鼻喉科（鼻炎、听力检查等）",
+      "quiz.q4.opt8": "物理治疗与康复（运动损伤、术后康复）",
+      "quiz.q4.opt9": "妇产科（孕前检查、产检、妇科咨询）",
+      "quiz.q4.opt10": "其他诊疗项目",
+
+      "quiz.q5": "Q5 意向就诊城市？",
+      "quiz.q5.opt1": "上海",
+      "quiz.q5.opt2": "北京",
+      "quiz.q5.opt3": "广州",
+      "quiz.q5.opt4": "深圳",
+      "quiz.q5.opt5": "杭州",
+      "quiz.q5.opt6": "其他城市",
+
+      "quiz.q6": "Q6 您预计到店就诊日期？",
+      "quiz.q6.undecided": "暂未确定",
+      "quiz.q6.prevMonth": "上个月",
+      "quiz.q6.nextMonth": "下个月",
+
+      "quiz.q7": "Q7 您的首选沟通方式？",
+      "quiz.q7.opt1": "微信沟通",
+      "quiz.q7.opt2": "电话直接沟通",
+
+      "quiz.q8": "最后一步，请留下您的联系方式",
+      "quiz.q8.name": "姓名",
+      "quiz.q8.name.ph": "您的姓名",
+      "quiz.q8.phone": "手机号",
+      "quiz.q8.phone.ph": "联系电话（含国家代码）",
+      "quiz.q8.wechat": "微信号",
+      "quiz.q8.wechat.ph": "微信号（选填）",
+      "quiz.q8.email": "邮箱",
+      "quiz.q8.email.ph": "电子邮箱（选填）",
+      "quiz.q8.hotel": "入住酒店",
+      "quiz.q8.hotel.ph": "请输入酒店名称（中文或英文）",
+
+      "loading.1": "AI陪诊正在了解您的情况...",
+      "loading.2": "AI陪诊正在制定适合您的就诊方案...",
+
+      "aiplan.title": "AI 陪诊助手",
+      "aiplan.subtitle": "已为您生成就诊方案",
+      "aiplan.confirm": "确认选择",
+      "aiplan.confirmCount": "确认选择（{count}）",
+      "aiplan.placeholder": "输入您的问题...",
+      "aiplan.send": "发送",
+      "aiplan.pickedPrefix": "已选择 "
+    },
+
+    en: {
+      "topbar.hotline": "24/7 Multilingual Hotline: 400-888-XXXX",
+      "topbar.lang": "Language: ",
+      "topbar.switch": "Switch",
+      "topbar.chinese": "中文",
+
+      "nav.home": "Home",
+      "nav.about": "About Us",
+      "nav.services": "Services",
+      "nav.network": "Clinics",
+      "nav.insurance": "Insurance",
+      "nav.contact": "Contact",
+      "nav.register": "Sign Up",
+      "nav.menu": "Open Menu",
+
+      "carousel.1.title": "Certified Medical Credentials",
+      "carousel.1.desc": "All partner physicians hold valid licenses, and our clinics are internationally accredited for quality care.",
+      "carousel.2.title": "Evidence-Based Treatment",
+      "carousel.2.desc": "We strictly follow international clinical guidelines and the latest evidence, rejecting overtreatment.",
+      "carousel.3.title": "High Value, Quality Care",
+      "carousel.3.desc": "Transparent and fair pricing lets you enjoy world-class medical service at a reasonable cost.",
+      "carousel.4.title": "AI-Assisted Interpretation",
+      "carousel.4.desc": "Smart AI translation accompanies your visit for real-time multilingual communication.",
+      "carousel.5.title": "International Card Payment",
+      "carousel.5.desc": "We accept Visa, Mastercard and other major international credit cards with clear, traceable billing.",
+      "carousel.6.title": "International Insurance Support",
+      "carousel.6.desc": "Direct billing with major global insurers means no out-of-pocket advance payment.",
+      "carousel.7.title": "Multilingual Medical Documents",
+      "carousel.7.desc": "Reports, prescriptions and records in Chinese, English, Japanese and Korean for cross-border care and claims.",
+      "carousel.prev": "Previous",
+      "carousel.next": "Next",
+
+      "hero.title1": "Quality and Convenient",
+      "hero.title2": "Medical Services for Expats",
+      "hero.cta": "Book Now",
+
+      "about.eyebrow": "About Us",
+      "about.title1": "An International Medical Group",
+      "about.title2": "Centered on Evidence-Based Medicine",
+      "about.text": "Founded in 2015, we have built a network of directly-operated clinics across 15 cities nationwide, staffed by multilingual physicians in Chinese, English, Japanese and Korean. Combining international standards with local resources, we deliver one-stop care from family medicine to specialist referral and medical transport.",
+      "about.stat1": "Direct Clinics",
+      "about.stat2": "Cities Covered",
+      "about.stat3": "Evidence-Based Doctors",
+      "about.stat4": "Annual Visits",
+
+      "services.eyebrow": "Our Services",
+      "services.title": "Comprehensive Medical & Health Services",
+      "services.sub": "From everyday care to specialist referral, from health screening to corporate wellness, covering every medical need for you and your family.",
+      "service.1.title": "General Practice & Family Medicine",
+      "service.1.desc": "Continuous health management, common-illness care and chronic-disease follow-up for individuals and families.",
+      "service.2.title": "Pediatrics & Child Health",
+      "service.2.desc": "Full care from newborns to adolescents, including vaccination, growth assessment and common childhood illness.",
+      "service.3.title": "Health Screening & Preventive Medicine",
+      "service.3.desc": "Personalized check-up plans with guideline-based early cancer screening, cardiovascular risk assessment and vaccine counseling.",
+      "service.4.title": "Dental Care",
+      "service.4.desc": "Examinations, cleaning, fillings, orthodontic consultation and implant referral in a comfortable setting.",
+      "service.5.title": "Medical Aesthetics",
+      "service.5.desc": "Skin management, injectables, laser treatments and anti-aging delivered by licensed aesthetic physicians.",
+      "service.6.title": "Specialist Referral",
+      "service.6.desc": "Access to top-tier hospital specialists with booking, accompaniment and multilingual interpretation support.",
+
+      "network.eyebrow": "Clinic Network",
+      "network.title": "Partner Clinics Across China & Overseas",
+      "network.sub": "Zhuozheng Medical now covers 14 cities at home and abroad, delivering premium care to clients worldwide.",
+      "city.1.name": "Beijing", "city.1.landmark": "Temple of Heaven",
+      "city.2.name": "Shanghai", "city.2.landmark": "Oriental Pearl Tower",
+      "city.3.name": "Guangzhou", "city.3.landmark": "Canton Tower",
+      "city.4.name": "Foshan", "city.4.landmark": "Century Lotus",
+      "city.5.name": "Shenzhen", "city.5.landmark": "Ping An Tower",
+      "city.6.name": "Chongqing", "city.6.landmark": "Liberation Monument",
+      "city.7.name": "Wuhan", "city.7.landmark": "Yellow Crane Tower",
+      "city.8.name": "Changsha", "city.8.landmark": "IFS Tower",
+      "city.9.name": "Chengdu", "city.9.landmark": "Kuanzhai Alley",
+      "city.10.name": "Suzhou", "city.10.landmark": "Gate of the Orient",
+      "city.11.name": "Hangzhou", "city.11.landmark": "West Lake",
+      "city.12.name": "Xi'an", "city.12.landmark": "Giant Wild Goose Pagoda",
+      "city.13.name": "Singapore", "city.13.landmark": "Merlion",
+      "city.14.name": "Kuala Lumpur", "city.14.landmark": "Petronas Towers",
+
+      "insurance.eyebrow": "Insurance Partners",
+      "insurance.title1": "International Direct Billing",
+      "insurance.title2": "A Smoother Visit",
+      "insurance.text": "We partner with major global commercial insurers for direct billing, so you can receive care without paying out of pocket.",
+      "insurance.btn": "Ask About Direct Billing",
+      "insurer.1": "MSH",
+      "insurer.2": "Bupa",
+      "insurer.3": "Cigna",
+      "insurer.4": "AXA",
+      "insurer.5": "Allianz",
+      "insurer.6": "Ping An Health",
+      "insurer.7": "GBG",
+      "insurer.8": "Aetna",
+
+      "contact.eyebrow": "Contact Us",
+      "contact.title1": "Booking or Inquiries",
+      "contact.title2": "Reach Out Anytime",
+      "contact.text": "Our multilingual support team responds within 15 minutes during business hours.",
+      "contact.email": "Email",
+      "contact.hotline": "24/7 Hotline",
+      "contact.hq": "Headquarters",
+      "contact.address": "No.100 Century Avenue, Pudong New Area, Shanghai",
+      "contact.cta": "Book Online Now",
+
+      "footer.desc": "Professional and convenient international medical services for expats in China.",
+      "footer.company": "Company",
+      "footer.services": "Services",
+      "footer.contact": "Contact",
+      "footer.wechat": "WeChat",
+      "footer.weibo": "Weibo",
+      "footer.linkedin": "LinkedIn",
+      "footer.service1": "General Practice",
+      "footer.service2": "Pediatrics",
+      "footer.service3": "Health Screening",
+      "footer.service4": "Medical Transport",
+      "footer.copyright": "© 2025 Zhuozheng Medical. All rights reserved.",
+      "footer.privacy": "Privacy Policy",
+      "footer.terms": "Terms of Service",
+      "footer.backtotop": "Back to Top",
+
+      "ai.label": "AI Care",
+      "ai.title": "AI Care Assistant",
+      "ai.status": "Online",
+      "ai.welcome": "Hello! I'm your Zhuozheng AI Care Assistant. Welcome to experience Zhuozheng's high-quality medical services. Please fill in the \"Care Needs Form\" (takes about 1 minute) so I can better understand your needs and assist you.",
+      "ai.start": "Start the Care Needs Form",
+      "ai.placeholder": "Type your question...",
+      "ai.send": "Send",
+      "ai.history.title": "Visit History",
+      "ai.history.label": "Visit Record",
+      "ai.history.patient": "Patient",
+      "ai.history.plan": "Plan",
+      "ai.history.intent": "Intent",
+
+      "quiz.title": "Expat Medical Appointment",
+      "quiz.progress": "Step {current} of {total}",
+      "quiz.prev": "Back",
+      "quiz.next": "Next",
+      "quiz.submit": "Submit Booking",
+
+      "quiz.q1": "Q1 Your nationality & current location?",
+      "quiz.q1.opt1": "Overseas resident",
+      "quiz.q1.opt2": "Living in China (with residence permit)",
+      "quiz.q1.subtitle": "Please select your country/region",
+      "quiz.q1.select": "Select country/region",
+      "quiz.q1.hot": "Popular: ",
+      "quiz.q1.hot1": "USA",
+      "quiz.q1.hot2": "Japan",
+      "quiz.q1.hot3": "Korea",
+      "quiz.q1.hot4": "Singapore",
+
+      "quiz.q2": "Q2 How do you plan to enter China for your visit?",
+      "quiz.q2.opt1": "Visa-free / 144h transit (short trip with treatment)",
+      "quiz.q2.opt2": "Tourist Visa (L)",
+      "quiz.q2.opt3": "Private Affairs Visa (S2, for short-term private visits incl. medical care)",
+      "quiz.q2.opt4": "Already in China with a residence permit",
+
+      "quiz.q3": "Q3 How long can you stay in Mainland China?",
+      "quiz.q3.opt1": "3–7 days",
+      "quiz.q3.opt2": "7–15 days",
+      "quiz.q3.opt3": "15–30 days",
+      "quiz.q3.opt4": "Over 30 days",
+      "quiz.q3.opt5": "Long-term resident",
+
+      "quiz.q4": "Q4 Which service would you like to consult?",
+      "quiz.q4.opt1": "Dental (implants, orthodontics, cleaning, root canal)",
+      "quiz.q4.opt2": "Medical Aesthetics (injectables, IPL, skin management)",
+      "quiz.q4.opt3": "Pediatrics (vaccination, growth assessment)",
+      "quiz.q4.opt4": "Personalized Check-up (premium packages)",
+      "quiz.q4.opt5": "Dermatology (allergy, eczema, skin issues)",
+      "quiz.q4.opt6": "Ophthalmology (vision, dry eye)",
+      "quiz.q4.opt7": "ENT (rhinitis, hearing tests)",
+      "quiz.q4.opt8": "Physiotherapy & Rehab (sports injury, post-op)",
+      "quiz.q4.opt9": "Obstetrics & Gynecology (pre-pregnancy, prenatal)",
+      "quiz.q4.opt10": "Other services",
+
+      "quiz.q5": "Q5 Preferred city for your visit?",
+      "quiz.q5.opt1": "Shanghai",
+      "quiz.q5.opt2": "Beijing",
+      "quiz.q5.opt3": "Guangzhou",
+      "quiz.q5.opt4": "Shenzhen",
+      "quiz.q5.opt5": "Hangzhou",
+      "quiz.q5.opt6": "Other city",
+
+      "quiz.q6": "Q6 Your expected visit date?",
+      "quiz.q6.undecided": "Undecided",
+      "quiz.q6.prevMonth": "Previous month",
+      "quiz.q6.nextMonth": "Next month",
+
+      "quiz.q7": "Q7 Your preferred contact method?",
+      "quiz.q7.opt1": "WeChat",
+      "quiz.q7.opt2": "Phone call",
+
+      "quiz.q8": "Last step — please leave your contact details",
+      "quiz.q8.name": "Name",
+      "quiz.q8.name.ph": "Your name",
+      "quiz.q8.phone": "Phone",
+      "quiz.q8.phone.ph": "Contact number (with country code)",
+      "quiz.q8.wechat": "WeChat ID",
+      "quiz.q8.wechat.ph": "WeChat ID (optional)",
+      "quiz.q8.email": "Email",
+      "quiz.q8.email.ph": "Email (optional)",
+      "quiz.q8.hotel": "Hotel",
+      "quiz.q8.hotel.ph": "Enter hotel name (Chinese or English)",
+
+      "loading.1": "AI assistant is reviewing your information...",
+      "loading.2": "AI assistant is preparing your care plan...",
+
+      "aiplan.title": "AI Care Assistant",
+      "aiplan.subtitle": "Your care plan is ready",
+      "aiplan.confirm": "Confirm Selection",
+      "aiplan.confirmCount": "Confirm Selection ({count})",
+      "aiplan.placeholder": "Type your question...",
+      "aiplan.send": "Send",
+      "aiplan.pickedPrefix": "Selected "
+    },
+
+    ja: {
+      "topbar.hotline": "24時間多言語ホットライン：400-888-XXXX",
+      "topbar.lang": "現在の言語：",
+      "topbar.switch": "切替",
+      "topbar.chinese": "中文",
+
+      "nav.home": "ホーム",
+      "nav.about": "私たちについて",
+      "nav.services": "医療サービス",
+      "nav.network": "クリニック",
+      "nav.insurance": "保険提携",
+      "nav.contact": "お問い合わせ",
+      "nav.register": "登録",
+      "nav.menu": "メニューを開く",
+
+      "carousel.1.title": "認定された医療資格",
+      "carousel.1.desc": "すべての提携医師が正規の資格を保有し、クリニックは国際医療品質認証を取得しています。",
+      "carousel.2.title": "根拠に基づく診療",
+      "carousel.2.desc": "国際臨床ガイドラインと最新のエビデンスに厳格に従い、過剰医療を避けます。",
+      "carousel.3.title": "高コスパの質の高いサービス",
+      "carousel.3.desc": "合理的で透明な料金体系で、国際水準の医療サービスをご利用いただけます。",
+      "carousel.4.title": "AI付き添いで言葉の壁を解消",
+      "carousel.4.desc": "AI翻訳が診察に同行し、リアルタイムの多言語コミュニケーションを実現します。",
+      "carousel.5.title": "国際クレジットカード対応",
+      "carousel.5.desc": "Visa・Mastercardなど主要な国際カードに対応し、明細も確認しやすくなっています。",
+      "carousel.6.title": "国際商業保険に対応",
+      "carousel.6.desc": "主要な海外医療保険と直接請求提携し、立て替え不要でスムーズに受診できます。",
+      "carousel.7.title": "多言語の医療文書",
+      "carousel.7.desc": "診断書・処方・カルテを中英日韓で出力でき、海外受診や保険請求に便利です。",
+      "carousel.prev": "前へ",
+      "carousel.next": "次へ",
+
+      "hero.title1": "外国人向けの質の高い便利な",
+      "hero.title2": "医療サービス",
+      "hero.cta": "今すぐ予約",
+
+      "about.eyebrow": "私たちについて",
+      "about.title1": "根拠に基づく医療を核とする",
+      "about.title2": "国際医療グループ",
+      "about.text": "2015年の設立以来、全国15都市に直営クリニックを展開し、中・英・日・韓の多言語医師チームを擁しています。国際診療基準と現地医療資源を融合し、家庭医から専門医紹介、医療搬送までワンストップで提供します。",
+      "about.stat1": "直営クリニック",
+      "about.stat2": "展開都市",
+      "about.stat3": "根拠に基づく医師",
+      "about.stat4": "年間受診数",
+
+      "services.eyebrow": "サービス",
+      "services.title": "包括的な医療・健康サービス",
+      "services.sub": "日常診療から専門医紹介、健康診断から企業健診まで、ご家族のあらゆる医療ニーズに対応します。",
+      "service.1.title": "総合診療・家庭医学",
+      "service.1.desc": "個人・家族への継続的な健康管理、一般疾患の診療、慢性疾患のフォローアップ。",
+      "service.2.title": "小児科・子どもの健康",
+      "service.2.desc": "新生児から思春期までの健康管理、予防接種、成長評価、小児の一般疾患診療。",
+      "service.3.title": "健康診断・予防医学",
+      "service.3.desc": "国際ガイドラインに基づく早期がん検診、心血管リスク評価、ワクチン相談を含む個別健診プラン。",
+      "service.4.title": "歯科医療",
+      "service.4.desc": "検診、クリーニング、詰め物、矯正相談、インプラント紹介を快適な環境で提供。",
+      "service.5.title": "美容医療",
+      "service.5.desc": "スキンケア、注入美容、レーザー、アンチエイジングを有資格医が個別プランで提供。",
+      "service.6.title": "専門医紹介",
+      "service.6.desc": "三甲病院の専門医療リソースへの予約・付き添い・多言語通訳をサポート。",
+
+      "network.eyebrow": "クリニックネットワーク",
+      "network.title": "国内外に広がる提携クリニック",
+      "network.sub": "卓正医療は国内外14都市をカバーし、世界中のお客様に高品質な医療を提供します。",
+      "city.1.name": "北京", "city.1.landmark": "天壇",
+      "city.2.name": "上海", "city.2.landmark": "東方明珠塔",
+      "city.3.name": "広州", "city.3.landmark": "広州タワー",
+      "city.4.name": "佛山", "city.4.landmark": "世紀蓮",
+      "city.5.name": "深圳", "city.5.landmark": "平安タワー",
+      "city.6.name": "重慶", "city.6.landmark": "解放碑",
+      "city.7.name": "武漢", "city.7.landmark": "黄鶴楼",
+      "city.8.name": "長沙", "city.8.landmark": "IFSタワー",
+      "city.9.name": "成都", "city.9.landmark": "寛窄巷子",
+      "city.10.name": "蘇州", "city.10.landmark": "蘇州之門",
+      "city.11.name": "杭州", "city.11.landmark": "西湖",
+      "city.12.name": "西安", "city.12.landmark": "大雁塔",
+      "city.13.name": "シンガポール", "city.13.landmark": "マーライオン",
+      "city.14.name": "クアラルンプール", "city.14.landmark": "ペトロナスツインタワー",
+
+      "insurance.eyebrow": "保険提携",
+      "insurance.title1": "国際保険の直接請求",
+      "insurance.title2": "よりスムーズな受診",
+      "insurance.text": "世界の主要な商業医療保険会社と直接請求提携しており、立て替え不要で医療サービスをご利用いただけます。",
+      "insurance.btn": "直接請求について相談",
+      "insurer.1": "MSH",
+      "insurer.2": "Bupa",
+      "insurer.3": "Cigna",
+      "insurer.4": "AXA",
+      "insurer.5": "Allianz",
+      "insurer.6": "平安健康",
+      "insurer.7": "GBG",
+      "insurer.8": "Aetna",
+
+      "contact.eyebrow": "お問い合わせ",
+      "contact.title1": "予約・ご相談は",
+      "contact.title2": "いつでもお気軽に",
+      "contact.text": "多言語カスタマーサポートが営業時間内に15分以内で返信いたします。",
+      "contact.email": "メール",
+      "contact.hotline": "24時間ホットライン",
+      "contact.hq": "本社",
+      "contact.address": "上海市浦東新区世紀大道100号",
+      "contact.cta": "オンライン予約",
+
+      "footer.desc": "在華外国人のための専門的で便利な国際医療サービス。",
+      "footer.company": "会社",
+      "footer.services": "サービス",
+      "footer.contact": "お問い合わせ",
+      "footer.wechat": "WeChat",
+      "footer.weibo": "Weibo",
+      "footer.linkedin": "LinkedIn",
+      "footer.service1": "総合診療",
+      "footer.service2": "小児科",
+      "footer.service3": "健康診断",
+      "footer.service4": "医療搬送",
+      "footer.copyright": "© 2025 卓正医療. 無断転載を禁じます。",
+      "footer.privacy": "プライバシーポリシー",
+      "footer.terms": "利用規約",
+      "footer.backtotop": "トップへ戻る",
+
+      "ai.label": "AI付き添い",
+      "ai.title": "AI付き添いアシスタント",
+      "ai.status": "オンライン",
+      "ai.welcome": "こんにちは！卓正AI付き添いアシスタントです。卓正の高品質な医療サービスへようこそ。お手数ですが「受診ニーズ収集票」（約1分）をご記入いただくと、より適切にサポートできます。",
+      "ai.start": "受診ニーズの入力を開始",
+      "ai.placeholder": "ご質問を入力...",
+      "ai.send": "送信",
+      "ai.history.title": "受診履歴",
+      "ai.history.label": "受診記録",
+      "ai.history.patient": "患者",
+      "ai.history.plan": "プラン",
+      "ai.history.intent": "意向",
+
+      "quiz.title": "外国人患者の受診予約",
+      "quiz.progress": "ステップ {current} / 全 {total} ステップ",
+      "quiz.prev": "戻る",
+      "quiz.next": "次へ",
+      "quiz.submit": "予約を送信",
+
+      "quiz.q1": "Q1 国籍と現在地は？",
+      "quiz.q1.opt1": "海外居住者",
+      "quiz.q1.opt2": "中国在住（居留許可あり）",
+      "quiz.q1.subtitle": "国・地域を選択してください",
+      "quiz.q1.select": "国・地域を選択",
+      "quiz.q1.hot": "人気：",
+      "quiz.q1.hot1": "米国",
+      "quiz.q1.hot2": "日本",
+      "quiz.q1.hot3": "韓国",
+      "quiz.q1.hot4": "シンガポール",
+
+      "quiz.q2": "Q2 どのような方法で中国に入国・受診しますか？",
+      "quiz.q2.opt1": "ビザ免除／144時間トランジット（短期旅行＋治療）",
+      "quiz.q2.opt2": "観光ビザ（L）",
+      "quiz.q2.opt3": "私事ビザ（S2、医療などの短期私事向け）",
+      "quiz.q2.opt4": "中国在住（居留許可あり）",
+
+      "quiz.q3": "Q3 中国大陸での滞在可能期間は？",
+      "quiz.q3.opt1": "3～7日",
+      "quiz.q3.opt2": "7～15日",
+      "quiz.q3.opt3": "15～30日",
+      "quiz.q3.opt4": "30日以上",
+      "quiz.q3.opt5": "長期滞在",
+
+      "quiz.q4": "Q4 相談・治療したい項目は？",
+      "quiz.q4.opt1": "歯科（インプラント、矯正、クリーニング、根管治療）",
+      "quiz.q4.opt2": "美容医療（注入美容、フォトフェイシャル、スキンケア）",
+      "quiz.q4.opt3": "小児科（予防接種、成長評価）",
+      "quiz.q4.opt4": "個別健診（プレミアムプラン）",
+      "quiz.q4.opt5": "皮膚科（アレルギー、湿疹、皮膚疾患）",
+      "quiz.q4.opt6": "眼科（視力検査、ドライアイ）",
+      "quiz.q4.opt7": "耳鼻咽喉科（鼻炎、聴力検査）",
+      "quiz.q4.opt8": "理学療法・リハビリ（スポーツ障害、術後）",
+      "quiz.q4.opt9": "産婦人科（妊娠前検査、妊婦健診）",
+      "quiz.q4.opt10": "その他の診療",
+
+      "quiz.q5": "Q5 受診希望都市は？",
+      "quiz.q5.opt1": "上海",
+      "quiz.q5.opt2": "北京",
+      "quiz.q5.opt3": "広州",
+      "quiz.q5.opt4": "深圳",
+      "quiz.q5.opt5": "杭州",
+      "quiz.q5.opt6": "その他の都市",
+
+      "quiz.q6": "Q6 来院予定日は？",
+      "quiz.q6.undecided": "未定",
+      "quiz.q6.prevMonth": "前月",
+      "quiz.q6.nextMonth": "翌月",
+
+      "quiz.q7": "Q7 希望する連絡方法は？",
+      "quiz.q7.opt1": "WeChat",
+      "quiz.q7.opt2": "電話",
+
+      "quiz.q8": "最後に、連絡先をご記入ください",
+      "quiz.q8.name": "氏名",
+      "quiz.q8.name.ph": "お名前",
+      "quiz.q8.phone": "電話番号",
+      "quiz.q8.phone.ph": "電話番号（国コード含む）",
+      "quiz.q8.wechat": "WeChat ID",
+      "quiz.q8.wechat.ph": "WeChat ID（任意）",
+      "quiz.q8.email": "メール",
+      "quiz.q8.email.ph": "メール（任意）",
+      "quiz.q8.hotel": "宿泊ホテル",
+      "quiz.q8.hotel.ph": "ホテル名を入力（中国語または英語）",
+
+      "loading.1": "AI付き添いが状況を確認しています...",
+      "loading.2": "AI付き添いが受診プランを作成しています...",
+
+      "aiplan.title": "AI付き添いアシスタント",
+      "aiplan.subtitle": "受診プランを作成しました",
+      "aiplan.confirm": "選択を確定",
+      "aiplan.confirmCount": "選択を確定（{count}）",
+      "aiplan.placeholder": "ご質問を入力...",
+      "aiplan.send": "送信",
+      "aiplan.pickedPrefix": "選択済み "
+    }
+  };
+
+  // 额外词条：AI 方案页正文、提示、智能客服回复
+  var EXTRA = {
+    zh: {
+      "ap.greet": "Hi {name} 😊 根据你的情况：{country}国籍、{entry}、{city}轻医美就诊、预约{date}档期，我为你整理了一套合规、适配短期就诊的专属方案。",
+      "ap.complianceTitle": "✅ 合规就诊说明",
+      "ap.complianceText": "{entry}支持当天完成、无需复诊、无长恢复期的无创/微创轻医美，不支持手术、全麻、拆线类项目。以下为你整理全部合规项目，方便你对比参考。",
+      "ap.projectsTitle": "✨ 合规轻医美项目清单",
+      "ap.note": "汇率参考：1RMB≈0.13EUR，价格为单次常规区间，无隐形消费",
+      "ap.group1Title": "1. 肤质改善类（基础热门、零恢复期）",
+      "ap.g1_1": "光子嫩肤（提亮/均匀肤色/淡泛红）：1800–3000元｜235–390欧元",
+      "ap.g1_2": "面部深层清洁+肤质修复：800–1500元｜105–195欧元",
+      "ap.g1_3": "敏感肌舒缓护理：1000–1800元｜130–235欧元",
+      "ap.group2Title": "2. 微创养护类（细腻肤质、轻度抗衰）",
+      "ap.g2_1": "基础水光补水（干皮救星、水润提亮）：2500–4000元｜325–520欧元",
+      "ap.g2_2": "浅层细纹精细化改善：3000–5000元｜390–650欧元",
+      "ap.group3Title": "3. 基础医美养护类",
+      "ap.g3_1": "合规温和脱毛（单部位）：600–1200元｜80–155欧元",
+      "ap.g3_2": "医术后舒缓修复护理：900–1600元｜115–210欧元",
+      "ap.clinicTitle": "🏥 推荐接诊诊所",
+      "ap.clinicIntro": "为你匹配卓正医疗两家正规涉外接诊门店，规范度高、适配外籍审美与就诊习惯。",
+      "ap.clinic1Name": "1. 卓正医疗静安国际诊所（首推）",
+      "ap.clinic1Addr": "地址：上海市静安区长安路958号静安国际中心C座L203",
+      "ap.clinic1Adv": "优势：市中心门店，涉外接诊经验足，双语沟通顺畅",
+      "ap.clinic2Name": "2. 卓正医疗浦东LCM诊所（备选）",
+      "ap.clinic2Addr": "地址：上海市浦东新区张杨路2389弄A座16层1601",
+      "ap.clinic2Adv": "优势：营业时间更长，档期灵活，适合错峰就诊",
+      "ap.question": "💬 为了更好的给您推荐匹配的项目和医生，还需要了解一下您本次想优先改善哪类皮肤问题呢？",
+      "ap.optA": "A. 皮肤暗沉、肤色不均、泛红粗糙（优先光子嫩肤）",
+      "ap.optB": "B. 皮肤干燥、缺水卡粉（优先基础水光补水）",
+      "ap.optC": "C. 面部浅层细纹、轻微松弛（优先细纹精细化改善）",
+      "ap.optD": "D. 日常基础清洁、舒缓养护",
+      "ap.botChoice": "Hi {name} 😊 结合你的情况和需求，我初步筛选了3款水光项目和3位专科医生，你可以按需选择。",
+      "ap.botChoice2": "您可以勾选意向的项目和医生，进一步了解。也可以只在输入框提出想问的问题，很乐意为您解答。",
+      "ap.selectedSummary": "已选 {count} 项",
+      "ap.interest": "我对 {items} 比较感兴趣。",
+      "ap.confirmAsk": "好的，接下来您想了解哪方面的信息呢？",
+      "ap.followBook": "我已经确定了项目和医生，请帮助我完成预约流程",
+      "ap.followLearn": "我想进一步了解所选的项目和医生，确认是否适合我",
+      "ap.followMore": "我想再了解下其他项目",
+      "ap.sendReply": "收到您的问题，我会尽快为您解答。您也可以拨打 24 小时热线 400-888-0000 联系我们的多语种客服。",
+      "ap.bookGreet": "收到！结合你确认的就诊方案：{project}｜{doctor}｜{clinic}｜{date}就诊，我为你整理了预约流程，您可以按照如下指引完成操作。",
+      "ap.bk1Title": "完成外籍账号注册",
+      "ap.bk1p1": "点击下方注册建档按钮，完成系统注册。",
+      "ap.bk1p2": "请选择护照作为有效就诊证件，填写本人真实姓名、护照信息、常用微信联系方式，完成账号实名认证。外籍用户无需国内身份证，护照建档即可正常挂号、到店就诊、开具正规病历。",
+      "ap.bk1p3": "请您放心，注册填写的所有信息均严格遵循医疗隐私保护规范，仅用于院内建档、预约核验及就诊追溯，不会对外泄露、挪作他用，全程隐私加密保护。",
+      "ap.bkRegister": "注册",
+      "ap.bk2Title": "下载官方平台",
+      "ap.bk2p1": "请下载卓正医疗官方APP，这是院内唯一正规预约、建档、查询就诊信息的官方渠道，支持外籍用户护照建档，适配境外就诊人群。",
+      "ap.bkDownload": "下载卓正医疗APP",
+      "ap.bk3Title": "线上挂号，锁定专属就诊资源",
+      "ap.bk3p1": "用注册好的账号登录卓正医疗官方APP，您可以在「我的 - 诊疗服务记录 - 受理中」查找到此次预约信息。如需调整预约，请根据AI陪诊助手的指引，在应用内重新预约。",
+      "ap.bk3p2": "预约将在支付完成后立刻生效，锁定医生档期。目前线上支持微信支付、支付宝、国际信用卡（VISA/Mastercard）直接支付，无需提前兑换人民币。",
+      "ap.bkSpecPatient": "就诊人",
+      "ap.bkSpecClinic": "就诊机构",
+      "ap.bkSpecDept": "就诊科室",
+      "ap.bkSpecDoctor": "出诊医生",
+      "ap.bkSpecDate": "就诊日期",
+      "ap.bkDeptValue": "皮肤科 / 轻医美专科",
+      "ap.bk4Title": "接收就诊通知与术前资料",
+      "ap.bk4p1": "预约确认无误后，可以在卓正医疗APP「我的 - 外籍患者陪诊」中，查看就诊通知和就诊准备清单。",
+      "ap.bk4li1": "双语就诊通知：包含门店精准地址、营业时间、到店核验流程；",
+      "ap.bk4li2": "就诊准备清单：术前禁忌、护肤注意事项、无需提前准备的项目。",
+      "ap.bk5Title": "到店就诊",
+      "ap.bk5p1": "请您按照预约时间（{date}）前往卓正医疗{clinic}。就诊仅需携带本人护照原件，到店后参考APP内「AI陪诊助手」指引或诊所内工作人员的指引完成医疗服务。",
+      "ap.bkWechatTip": "以上流程也可以在微信小程序「卓正医疗」内完成。考虑到外籍用户不熟悉中国大陆的医疗规范和就医流程，您也可以通过以下方式联系我们。",
+      "ap.bkContactTitle": "欢迎添加微信：",
+      "ap.bkEmail": "邮箱：enquiry@demo-health.com",
+      "ap.bkHotline": "24小时热线：400-888-0000",
+      "ap.bkThanks": "感谢您对卓正医疗的信任！",
+      "ap.ln1Title": "品牌与公司",
+      "ap.ln1p1": "润致（Aqualuna）是<strong>华熙生物</strong>旗下专业医美品牌。华熙生物为全球透明质酸核心研发与生产企业，拥有完整生物材料研发、无菌生产体系，产品线具备多国技术专利。",
+      "ap.lnCaption": "润致（Aqualuna）· 华熙生物旗下专业医美品牌",
+      "ap.ln2Title": "产品资质与工艺",
+      "ap.lnSpec1": "正式名称",
+      "ap.lnSpec1v": "注射用修饰透明质酸钠凝胶（昵称：润致娃娃针）",
+      "ap.lnSpec2": "监管类别",
+      "ap.lnSpec2v": "NMPA 国家三类医疗器械",
+      "ap.lnSpec3": "注册证号",
+      "ap.lnSpec3v": "国械注准 20203130295",
+      "ap.lnSpec4": "规格",
+      "ap.lnSpec4v": "本次选用 2.0ml 版本",
+      "ap.lnSpec5": "核心工艺",
+      "ap.lnSpec5v": "HEC 高效微交联技术，交联度 0.6%；粒径约 200μm，适配真皮浅层 - 中层注射",
+      "ap.lnSpec6": "配方构成",
+      "ap.lnSpec6v": "微交联透明质酸钠 + 缓释型盐酸利多卡因（缓解注射痛感）",
+      "ap.lnHighlight": "核心作用原理：常规基础水光大多为非交联透明质酸，代谢较快、侧重短期表层补水；润致娃娃针采用低度微交联结构，在真皮层形成网状储水支架。",
+      "ap.lnPoints": ["即时补充透明质酸，提升皮肤含水量；", "持续锁住水分，改善欧美肤质普遍锁水能力偏弱的问题；", "通过温和机械刺激，促进自身成纤维细胞活性，辅助胶原新生；", "轻柔填补浅层干纹，细腻肤质、改善粗糙。"],
+      "ap.lnSpec7": "适配人群",
+      "ap.lnSpec7v": "长期皮肤干燥、上妆易卡粉、换季起皮、肤质粗糙；面部存在浅表干纹、毛孔视觉粗大的人群。",
+      "ap.lnSpec8": "预期维持",
+      "ap.lnSpec8v": "单次治疗效果普遍 3–6 个月，最终时长受个人代谢速度、术后护肤习惯影响。",
+      "ap.ln3Title": "接诊医生介绍",
+      "ap.ln3p1": "<strong>{doctor}</strong>为皮肤医学硕士，拥有 10 年临床执业经验，具备英国医美进修经历、公立三甲从业背景，熟悉欧美肤质结构与海外自然审美，长期接诊外籍患者，擅长微创轻柔操作，能最大程度降低淤青、肿胀概率。",
+      "ap.lnCaption2": "{doctor} · 皮肤医学硕士 · 10 年临床经验",
+      "ap.ln4Title": "客观局限与风险说明",
+      "ap.ln4p1": "项目主打基础长效补水与肤质细腻，<strong>不具备强力美白、抗衰、填充塑形效果</strong>；术后 3–7 天内可能存在轻微泛红、针孔结痂、短暂反干，属于正常代谢现象，可自行恢复。",
+      "ap.ln4p2": "任何微创注射都无法 100% 规避轻微肿胀、点状淤青风险，医生会凭借经验精细化操作把控，但需你提前知晓并接纳正常术后反应。",
+      "ap.ln5Title": "过境免签就诊合规与行程影响",
+      "ap.ln5p1": "该项目属于微创轻医美，无需拆线、无需二次复诊，恢复周期短，可在过境免签停留期内完成，不影响行程安排。多数人术后无明显肿胀，不影响日常出行、拍照护肤；极少数肤质敏感人群可能存在短期轻微泛红，恢复周期短，基本不影响短期行程。",
+      "ap.ln6Title": "档期预约规则",
+      "ap.ln6p1": "李晓宁医生可预约档期有限，我们可免费为你预留专属时段直至就诊前 10 天；若届时你觉得方案不适合，可以取消，<strong>无预约定金、无违约金</strong>。",
+      "ap.lnEnd": "以上是这套方案的信息，你可以结合自身肤质需求、心理预期、行程安排<strong>自主决定</strong>。",
+      "ap.projTitle": "💧 水光项目推荐",
+      "ap.proj1Name": "入门基础款｜嗨体2.5",
+      "ap.proj1Price": "¥2,500–3,200/单次（约€325–415）",
+      "ap.proj1Desc": "含小分子透明质酸、氨基酸和维生素，常用于改善皮肤干燥粗糙、上妆卡粉，温和修护屏障、提亮均匀肤色。痛感低、术后反应轻微，几乎无红肿。恢复期极短，24–48小时即可正常出行护肤，不影响你的行程。",
+      "ap.proj2Name": "长效质感款｜润致娃娃针",
+      "ap.proj2Price": "¥3,200–4,000/单次（约€415–520）",
+      "ap.proj2Desc": "微交联透明质酸，可在真皮层形成储水结构，深层补水同时改善面部浅层干纹、细纹，让肤质细腻饱满、通透有光泽。单次效果可稳定数月，性价比高，适合想单次就诊、长效养护的情况。",
+      "ap.proj3Name": "提亮抗氧款｜冭活泡泡针",
+      "ap.proj3Price": "¥3,500–4,000/单次（约€455–520）",
+      "ap.proj3Desc": "含L-肌肽和抗氧化成分，常用于改善面部氧化发黄、肤色暗沉、泛红粗糙，做完皮肤通透透亮，素颜质感好。即时效果明显，短期出行颜值提升快。",
+      "ap.noteSel": "* 具体方案由医生根据面诊情况判断。",
+      "ap.docTitle": "👩‍⚕️ 接诊医生推荐",
+      "ap.docDesc": "以下医生均具备正规执业资质、双语接诊能力。",
+      "ap.doc1Name": "李晓宁 医生｜静安国际诊所",
+      "ap.doc1Desc": "哈医大皮肤医学硕士，曼彻斯特大学医美方向进修，原陆军总医院（现解放军总医院第七医学中心）公立皮肤科医师，从医10年+，美国激光医学和外科手术学会（ASLMS）会员。全梯度水光项目均可操作，擅长干燥肌个性化方案，把控微创痛感、降低术后反应，诊疗风格温和严谨，拒绝过度医美。双语流利，外籍患者接诊经验丰富。",
+      "ap.doc2Name": "陈雨桐 医生｜浦东LCM诊所",
+      "ap.doc2Desc": "国内知名医科大学临床医学硕士，皮肤科主治医师，从医8年+，专注皮肤抗氧化、肤色修护领域。手法精细、层次把控精准，擅长根据不同肤质定制提亮方案，微创操作细腻。",
+      "ap.doc3Name": "张雯 医生｜静安/浦东双店轮诊",
+      "ap.doc3Desc": "皮肤性病学专业硕士，持证皮肤科执业医师，从医9年+，深耕干燥肌屏障修护、中胚层长效养护。风格稳妥保守、容错率高。双语沟通顺畅。",
+      "ap.moreAsk": "好的，请问您是想进一步了解其他医美项目，还是想了解其他科室的医疗服务呢？",
+      "ap.moreBeauty": "了解其他医美项目",
+      "ap.moreDept": "了解其他科室服务",
+      "ap.beautyBot": "好的，结合你单次就诊、短恢复期的需求，我为你补充几款短时微创/无创的光电类医美项目，你可以继续了解。",
+      "ap.beautyTitle": "✨ 光电类医美项目推荐",
+      "ap.beauty1Name": "光子嫩肤（IPL）",
+      "ap.beauty1Price": "¥1,800–3,000/单次（约€235–390）",
+      "ap.beauty1Desc": "强脉冲光作用于表皮与浅层真皮，温和改善肤色暗沉、泛红、红血丝，同时刺激胶原新生、细腻肤质。无创、无恢复期，做完即可正常护肤化妆，几乎不影响行程。",
+      "ap.beauty2Name": "皮秒激光淡斑",
+      "ap.beauty2Price": "¥2,800–4,500/单次（约€365–585）",
+      "ap.beauty2Desc": "皮秒级激光精准击碎黑色素颗粒，改善晒斑、雀斑、肤色不均。恢复期短，一般3–5天结痂自然脱落，适合单次就诊、短期恢复。",
+      "ap.beauty3Name": "射频紧肤（无创抗衰）",
+      "ap.beauty3Price": "¥4,800–8,000/单次（约€625–1040）",
+      "ap.beauty3Desc": "射频能量加热真皮层，刺激胶原蛋白新生与收缩，改善面部轻度松弛、轮廓模糊。无创，做完即时可见紧致感，恢复期极短。",
+      "ap.deptBot": "好的，以下是我们提供的其他科室服务，请您重新选择您想咨询的科室。",
+      "ap.deptRecord": "好的，已为您记录「{dept}」的就诊意向。您可以继续在输入框提出相关问题，或点击下方确认选择完成预约。",
+      "ap.depts": ["齿科（种植、正畸、洁牙、根管治疗等）", "医学美容（注射美容、光子嫩肤、皮肤管理）", "儿科与儿童健康（疫苗、生长发育评估）", "个性化体检（高端定制体检方案）", "皮肤科（过敏、湿疹、皮肤问题诊疗）", "眼科（视力检查、干眼症治疗）", "耳鼻喉科（鼻炎、听力检查等）", "物理治疗与康复（运动损伤、术后康复）", "妇产科（孕前检查、产检、妇科咨询）", "其他诊疗项目"],
+      "toast.q1": "请选择您的国籍或所在地",
+      "toast.q": "请先选择一个选项",
+      "toast.name": "请填写您的姓名",
+      "toast.phone": "请填写手机号",
+      "toast.register": "注册建档功能演示：请使用护照完成实名认证",
+      "toast.download": "APP下载功能演示：请前往应用商店下载卓正医疗APP",
+      "aichat.r1": "您可以通过点击页面上的「立即预约」按钮填写就诊预约问卷，我们的客服会在15分钟内与您联系。",
+      "aichat.r2": "我们支持与全球主要商业医疗保险公司直付合作，包括 Bupa、Cigna、AXA、MSH 等，就诊免垫付。",
+      "aichat.r3": "外籍患者来华就医可申请 S2 私人事务签证，我们也支持 144 小时过境免签顺带治疗。具体可咨询我们的客服。",
+      "aichat.r4": "我们的医生团队配备中、英、日、韩等多语种服务，并提供 AI 陪诊翻译，无需担心语言障碍。",
+      "aichat.r5": "我们已覆盖上海、北京、广州、深圳、杭州等 14 个城市，您可以在「诊所网络」查看详情。",
+      "aichat.r6": "我们提供齿科服务，包括种植、正畸、洁牙、根管治疗等。您可以在预约问卷中选择「齿科」。",
+      "aichat.r7": "医学美容服务包括注射美容、光子嫩肤、皮肤管理等，由持证美容医生提供。",
+      "aichat.r8": "不同项目价格不同，我们坚持高性价比的优质服务。具体费用可在预约后由客服为您详细说明。",
+      "aichat.fallback": "感谢您的提问！关于具体的就诊问题，建议您点击「立即预约」填写问卷，或拨打 24 小时热线 400-888-0000，我们的多语种客服将为您解答。"
+    },
+    en: {
+      "ap.greet": "Hi {name} 😊 Based on your profile — {country} nationality, {entry}, aesthetic consultation in {city}, appointment on {date} — I've prepared a compliant plan tailored for short-term visits.",
+      "ap.complianceTitle": "✅ Compliance Notes",
+      "ap.complianceText": "{entry} supports same-day, no-follow-up, low-recovery non-invasive / minimally-invasive aesthetics. Surgery, general anesthesia and suture-type procedures are not supported. Below are all compliant options for your reference.",
+      "ap.projectsTitle": "✨ Compliant Aesthetic Options",
+      "ap.note": "Reference rate: 1 RMB ≈ 0.13 EUR. Prices are typical per-session ranges with no hidden fees.",
+      "ap.group1Title": "1. Skin Texture (popular basics, zero downtime)",
+      "ap.g1_1": "Photorejuvenation (brighten / even tone / reduce redness): ¥1800–3000 | €235–390",
+      "ap.g1_2": "Deep facial cleansing + skin repair: ¥800–1500 | €105–195",
+      "ap.g1_3": "Sensitive skin soothing care: ¥1000–1800 | €130–235",
+      "ap.group2Title": "2. Minimally-invasive Care (refined skin, light anti-aging)",
+      "ap.g2_1": "Basic hydrating booster (dry-skin savior, glow): ¥2500–4000 | €325–520",
+      "ap.g2_2": "Fine-line refinement: ¥3000–5000 | €390–650",
+      "ap.group3Title": "3. Basic Aesthetic Care",
+      "ap.g3_1": "Compliant gentle hair removal (per area): ¥600–1200 | €80–155",
+      "ap.g3_2": "Post-procedure soothing care: ¥900–1600 | €115–210",
+      "ap.clinicTitle": "🏥 Recommended Clinics",
+      "ap.clinicIntro": "We matched two of our licensed international-friendly clinics — highly standardized, suited to foreign aesthetics and visit habits.",
+      "ap.clinic1Name": "1. Distinct Medical Jing'an International Clinic (Top pick)",
+      "ap.clinic1Addr": "Address: L203, Block C, Jing'an International Center, 958 Chang'an Rd, Jing'an, Shanghai",
+      "ap.clinic1Adv": "Advantage: central location, strong international experience, smooth bilingual communication",
+      "ap.clinic2Name": "2. Distinct Medical Pudong LCM Clinic (Alternative)",
+      "ap.clinic2Addr": "Address: 1601, Tower A, Lane 2389, Zhangyang Rd, Pudong, Shanghai",
+      "ap.clinic2Adv": "Advantage: longer hours, flexible scheduling, good for off-peak visits",
+      "ap.question": "💬 To recommend the right projects and doctor, which skin concern would you like to improve first?",
+      "ap.optA": "A. Dull skin, uneven tone, redness / roughness (Photorejuvenation first)",
+      "ap.optB": "B. Dry, dehydrated, makeup caking (Hydrating booster first)",
+      "ap.optC": "C. Fine lines, slight laxity (Fine-line refinement first)",
+      "ap.optD": "D. Daily basic cleansing / soothing care",
+      "ap.botChoice": "Hi {name} 😊 Based on your needs, I shortlisted 3 hydrating boosters and 3 specialists. Choose as you like.",
+      "ap.botChoice2": "Tick the projects and doctor you're interested in to learn more. Or just type your question — happy to help.",
+      "ap.selectedSummary": "{count} selected",
+      "ap.interest": "I'm interested in {items}.",
+      "ap.confirmAsk": "Great — what would you like to know more about?",
+      "ap.followBook": "I've decided on the project and doctor — please help me with the booking process",
+      "ap.followLearn": "I'd like to learn more about my selection to confirm it suits me",
+      "ap.followMore": "I'd like to explore other projects",
+      "ap.sendReply": "Got your question — I'll get back to you shortly. You can also call our 24h hotline 400-888-0000 for multilingual support.",
+      "ap.bookGreet": "Received! For your plan — {project} | {doctor} | {clinic} | visit on {date} — here's the booking guide.",
+      "ap.bk1Title": "Create your foreign-patient account",
+      "ap.bk1p1": "Tap the register button below to create your account.",
+      "ap.bk1p2": "Use your passport as the valid ID, fill in your real name, passport details and WeChat contact, then complete identity verification. Foreign patients don't need a domestic ID — a passport account lets you book, visit and get a proper medical record.",
+      "ap.bk1p3": "Rest assured: all registration info strictly follows medical privacy standards, used only for in-clinic records, booking verification and visit tracing. It is never shared, encrypted end-to-end.",
+      "ap.bkRegister": "Register",
+      "ap.bk2Title": "Download the official app",
+      "ap.bk2p1": "Download the Distinct Medical official app — the only official channel for booking, records and visit info, with passport support for overseas patients.",
+      "ap.bkDownload": "Download Distinct Medical App",
+      "ap.bk3Title": "Book online and lock your slot",
+      "ap.bk3p1": "Log in with your account. Find this appointment under 'Me – Treatment Records – In Progress'. To adjust, follow the AI companion's guidance in-app.",
+      "ap.bk3p2": "The appointment is confirmed upon payment and your doctor's slot is locked. We accept WeChat Pay, Alipay and international cards (VISA/Mastercard) — no need to exchange RMB in advance.",
+      "ap.bkSpecPatient": "Patient",
+      "ap.bkSpecClinic": "Clinic",
+      "ap.bkSpecDept": "Department",
+      "ap.bkSpecDoctor": "Doctor",
+      "ap.bkSpecDate": "Date",
+      "ap.bkDeptValue": "Dermatology / Aesthetics",
+      "ap.bk4Title": "Receive visit notices & pre-op info",
+      "ap.bk4p1": "After confirming, view the bilingual notice and preparation checklist under 'Me – Foreign Patient Companion' in the app.",
+      "ap.bk4li1": "Bilingual notice: exact address, hours, check-in flow;",
+      "ap.bk4li2": "Preparation checklist: pre-op cautions, skincare notes, nothing to prep in advance.",
+      "ap.bk5Title": "Visit the clinic",
+      "ap.bk5p1": "Please arrive at Distinct Medical {clinic} on your appointment date ({date}). Bring only your original passport; follow the in-app AI companion or staff guidance on site.",
+      "ap.bkWechatTip": "The above can also be done in the WeChat mini-program 'Distinct Medical'. As overseas patients may be unfamiliar with China's medical norms, you can also reach us via:",
+      "ap.bkContactTitle": "Add us on WeChat: ",
+      "ap.bkEmail": "Email: enquiry@demo-health.com",
+      "ap.bkHotline": "24h hotline: 400-888-0000",
+      "ap.bkThanks": "Thank you for trusting Distinct Medical!",
+      "ap.ln1Title": "Brand & Company",
+      "ap.ln1p1": "Aqualuna is a professional aesthetic brand under <strong>Bloomage Biotech</strong> — a global leader in hyaluronic acid R&D and manufacturing, with full biomaterial R&D and sterile production systems and multi-country patents.",
+      "ap.lnCaption": "Aqualuna · a professional aesthetic brand under Bloomage Biotech",
+      "ap.ln2Title": "Product Qualification & Process",
+      "ap.lnSpec1": "Official name",
+      "ap.lnSpec1v": "Modified Sodium Hyaluronate Gel for Injection (nickname: Aqualuna Baby Needle)",
+      "ap.lnSpec2": "Regulatory class",
+      "ap.lnSpec2v": "NMPA Class III medical device",
+      "ap.lnSpec3": "Registration No.",
+      "ap.lnSpec3v": "Guo Xie Zhu Zhun 20203130295",
+      "ap.lnSpec4": "Spec",
+      "ap.lnSpec4v": "2.0ml version selected this time",
+      "ap.lnSpec5": "Core process",
+      "ap.lnSpec5v": "HEC efficient micro-crosslinking, 0.6% crosslinking; ~200μm particles, suited for superficial-to-mid dermis injection",
+      "ap.lnSpec6": "Formula",
+      "ap.lnSpec6v": "Micro-crosslinked HA + sustained-release lidocaine HCl (reduces injection pain)",
+      "ap.lnHighlight": "Core principle: standard boosters use non-crosslinked HA that metabolizes fast and focuses on short-term surface hydration; Aqualuna uses low micro-crosslinking to form a mesh water-storage scaffold in the dermis.",
+      "ap.lnPoints": ["Instantly replenish HA and boost skin moisture;", "Sustain hydration, improving the weaker moisture-retention common in Western skin;", "Gently stimulate fibroblast activity to support collagen renewal;", "Softly fill shallow dry lines for smoother, refined skin."],
+      "ap.lnSpec7": "Suitable for",
+      "ap.lnSpec7v": "Long-term dry skin, makeup caking, seasonal flaking, rough texture; shallow dry lines, visually enlarged pores.",
+      "ap.lnSpec8": "Expected duration",
+      "ap.lnSpec8v": "Single treatment typically lasts 3–6 months, varying with metabolism and aftercare.",
+      "ap.ln3Title": "Treating Doctor",
+      "ap.ln3p1": "<strong>{doctor}</strong> holds a Master's in Dermatology with 10 years of clinical practice, UK aesthetic training and a top-tier public hospital background. Familiar with Western skin structure and natural aesthetics, experienced with foreign patients, skilled in gentle minimally-invasive techniques to minimize bruising and swelling.",
+      "ap.lnCaption2": "{doctor} · MSc Dermatology · 10 years experience",
+      "ap.ln4Title": "Limitations & Risks (objective)",
+      "ap.ln4p1": "The project focuses on basic long-lasting hydration and refined texture; it <strong>does not deliver strong whitening, anti-aging or filling/contouring</strong>. Mild redness, pinprick scabs or brief rebound dryness within 3–7 days are normal and self-resolving.",
+      "ap.ln4p2": "No minimally-invasive injection can 100% avoid slight swelling or pinpoint bruising; the doctor minimizes this with experience, but you should be aware and accept normal post-op reactions.",
+      "ap.ln5Title": "Transit Visa Compliance & Itinerary",
+      "ap.ln5p1": "This is a minimally-invasive procedure — no sutures, no second visit, short recovery — completable within a transit visa stay and won't affect your trip. Most patients show no obvious swelling and can travel and photograph normally; a few sensitive types may have brief mild redness with short recovery.",
+      "ap.ln6Title": "Scheduling Rules",
+      "ap.ln6p1": "Dr. Li Xiaoning's slots are limited; we can hold a dedicated slot free until 10 days before your visit. If it doesn't suit you then, cancel with <strong>no deposit, no penalty</strong>.",
+      "ap.lnEnd": "That's the plan. Decide based on your skin needs, expectations and itinerary.",
+      "ap.projTitle": "💧 Hydrating Booster Recommendations",
+      "ap.proj1Name": "Entry basic | Hearty 2.5",
+      "ap.proj1Price": "¥2,500–3,200/session (≈€325–415)",
+      "ap.proj1Desc": "Small-molecule HA, amino acids and vitamins to improve dryness/roughness and makeup caking, gently repair barrier and brighten tone. Low pain, minimal reaction, almost no redness. Very short recovery — normal travel/skincare in 24–48h.",
+      "ap.proj2Name": "Long-lasting | Aqualuna Baby Needle",
+      "ap.proj2Price": "¥3,200–4,000/session (≈€415–520)",
+      "ap.proj2Desc": "Micro-crosslinked HA forms a water-storage structure in the dermis, deeply hydrating while smoothing shallow lines for refined, plump, radiant skin. Effects last months — great for a single long-lasting visit.",
+      "ap.proj3Name": "Brightening antioxidant | Taihuo Bubble Needle",
+      "ap.proj3Price": "¥3,500–4,000/session (≈€455–520)",
+      "ap.proj3Desc": "L-carnosine and antioxidants to improve oxidation/yellowness, dullness and redness — leaving skin translucent and great bare-faced. Immediate effect, quick beauty boost for short trips.",
+      "ap.noteSel": "* Final plan is determined by the doctor after consultation.",
+      "ap.docTitle": "👩‍⚕️ Recommended Doctors",
+      "ap.docDesc": "All doctors below are licensed and bilingual.",
+      "ap.doc1Name": "Dr. Li Xiaoning | Jing'an International",
+      "ap.doc1Desc": "MSc Dermatology (Harbin Medical Univ.), aesthetic training at Univ. of Manchester, former public tertiary dermatologist, 10+ yrs, ASLMS member. Handles all booster tiers, specializes in dry-skin plans, minimizes post-op reactions, gentle and rigorous, rejects over-treatment. Fluent bilingual, rich foreign-patient experience.",
+      "ap.doc2Name": "Dr. Chen Yutong | Pudong LCM",
+      "ap.doc2Desc": "Clinical MSc, attending dermatologist, 8+ yrs, focused on antioxidant and tone repair. Precise technique, customized brightening plans, delicate minimally-invasive work.",
+      "ap.doc3Name": "Dr. Zhang Wen | Jing'an / Pudong rotating",
+      "ap.doc3Desc": "MSc Dermatology, licensed dermatologist, 9+ yrs, deep in dry-skin barrier repair and mesotherapy maintenance. Steady, conservative, high fault tolerance. Smooth bilingual communication.",
+      "ap.moreAsk": "Sure — would you like to explore other aesthetic projects, or learn about other departments' services?",
+      "ap.moreBeauty": "Explore other aesthetic projects",
+      "ap.moreDept": "Learn about other departments",
+      "ap.beautyBot": "Great — given your single-visit, short-recovery need, here are a few short minimally-invasive / non-invasive light-based options.",
+      "ap.beautyTitle": "✨ Light-based Aesthetic Recommendations",
+      "ap.beauty1Name": "Photorejuvenation (IPL)",
+      "ap.beauty1Price": "¥1,800–3,000/session (≈€235–390)",
+      "ap.beauty1Desc": "Intense pulsed light on epidermis and shallow dermis gently improves dullness, redness and broken capillaries while stimulating collagen for refined skin. Non-invasive, no downtime — skincare/makeup right after, barely affects travel.",
+      "ap.beauty2Name": "Picosecond Laser Spot Removal",
+      "ap.beauty2Price": "¥2,800–4,500/session (≈€365–585)",
+      "ap.beauty2Desc": "Picosecond laser precisely shatters melanin to improve sun spots, freckles and uneven tone. Short recovery — scabs shed in ~3–5 days, ideal for single-visit, short recovery.",
+      "ap.beauty3Name": "RF Skin Tightening (non-invasive anti-aging)",
+      "ap.beauty3Price": "¥4,800–8,000/session (≈€625–1040)",
+      "ap.beauty3Desc": "RF energy heats the dermis to stimulate collagen renewal and contraction, improving mild laxity and blurred contours. Non-invasive, immediate tightening, very short recovery.",
+      "ap.deptBot": "Sure — here are our other departments. Please pick the one you'd like to consult.",
+      "ap.deptRecord": "Noted your interest in 「{dept}」. Keep asking in the box, or tap confirm below to complete the booking.",
+      "ap.depts": ["Dentistry (implants, orthodontics, cleaning, root canal, etc.)", "Aesthetic medicine (injectables, IPL, skin management)", "Pediatrics & child health (vaccines, growth assessment)", "Personalized check-up (premium custom plans)", "Dermatology (allergy, eczema, skin conditions)", "Ophthalmology (vision, dry eye)", "ENT (rhinitis, hearing checks)", "Physiotherapy & rehab (sports injury, post-op rehab)", "OB/GYN (pre-pregnancy, maternity, consultation)", "Other services"],
+      "toast.q1": "Please select your nationality or location",
+      "toast.q": "Please select an option first",
+      "toast.name": "Please enter your name",
+      "toast.phone": "Please enter your phone number",
+      "toast.register": "Registration demo: please verify with your passport",
+      "toast.download": "App download demo: please get Distinct Medical App from your store",
+      "aichat.r1": "Tap the 'Book Now' button to fill in the appointment questionnaire — our team will contact you within 15 minutes.",
+      "aichat.r2": "We have direct-billing agreements with major global insurers including Bupa, Cigna, AXA and MSH — no out-of-pocket at visit.",
+      "aichat.r3": "Foreign patients can apply for an S2 private-affairs visa, and we also support 144-hour transit visa treatment. Ask our team for details.",
+      "aichat.r4": "Our doctors provide Chinese, English, Japanese, Korean and more, plus AI companion translation — no language barrier.",
+      "aichat.r5": "We cover 14 cities including Shanghai, Beijing, Guangzhou, Shenzhen and Hangzhou. See 'Clinic Network' for details.",
+      "aichat.r6": "We offer dentistry: implants, orthodontics, cleaning, root canal, etc. Choose 'Dentistry' in the questionnaire.",
+      "aichat.r7": "Aesthetic services include injectables, IPL and skin management by licensed aesthetic doctors.",
+      "aichat.r8": "Prices vary by project; we keep high-value quality care. Exact costs are explained by our team after booking.",
+      "aichat.fallback": "Thanks for your question! For specific medical concerns, tap 'Book Now' or call our 24h hotline 400-888-0000 for multilingual support."
+    },
+    ja: {
+      "ap.greet": "こんにちは{name}様😊 ご状況（{country}籍・{entry}・{city}での美容診療・予約日{date}）に基づき、短期滞在に適したコンプライアンス準拠のプランを作成しました。",
+      "ap.complianceTitle": "✅ コンプライアンス上の注意",
+      "ap.complianceText": "{entry}は来院当日で完了し、再診や長期回復を要さない非侵襲・低侵襲の美容医療に対応します。手術・全身麻酔・縫合系の施術は対象外です。以下にすべての準拠プロジェクトをまとめました。",
+      "ap.projectsTitle": "✨ 準拠の美容プロジェクト一覧",
+      "ap.note": "参考為替：1元≈0.13ユーロ。価格は単回の通常帯域で、隠れた費用はありません。",
+      "ap.group1Title": "1. 肌質改善（定番・ダウンタイムなし）",
+      "ap.g1_1": "フォトフェイシャル（美白／トーン整え／赤み軽減）：1800–3000元｜235–390ユーロ",
+      "ap.g1_2": "フェイシャル洗浄＋肌修復：800–1500元｜105–195ユーロ",
+      "ap.g1_3": "敏感肌ケア：1000–1800元｜130–235ユーロ",
+      "ap.group2Title": "2. 低侵襲ケア（肌質・軽いアンチエイジング）",
+      "ap.g2_1": "基本水光注射（乾燥肌救世主・ツヤ）：2500–4000元｜325–520ユーロ",
+      "ap.g2_2": "細シワ改善：3000–5000元｜390–650ユーロ",
+      "ap.group3Title": "3. 基本美容ケア",
+      "ap.g3_1": "準拠の優しい脱毛（部位ごと）：600–1200元｜80–155ユーロ",
+      "ap.g3_2": "施術後ケア：900–1600元｜115–210ユーロ",
+      "ap.clinicTitle": "🏥 おすすめのクリニック",
+      "ap.clinicIntro": "外国人対応の正規クリニック2院をご案内します。規範性が高く、海外の方の審美・受診習慣に適しています。",
+      "ap.clinic1Name": "1. 卓正医療 静安国際クリニック（第1推奨）",
+      "ap.clinic1Addr": "住所：上海市静安区長安路958号 静安国際センターC棟L203",
+      "ap.clinic1Adv": "強み：都心、外国人受診経験豊富、バイリンガル対応スムーズ",
+      "ap.clinic2Name": "2. 卓正医療 浦東LCMクリニック（予備）",
+      "ap.clinic2Addr": "住所：上海市浦東新区張楊路2389弄A棟16階1601",
+      "ap.clinic2Adv": "強み：営業時間が長く、予約枠が柔軟、穴場受診に最適",
+      "ap.question": "💬 より適したプロジェクトと医師をご提案するため、今回優先したいお肌の悩みを教えてください。",
+      "ap.optA": "A. くすみ・色むら・赤み・ざらつき（フォトフェイシャル優先）",
+      "ap.optB": "B. 乾燥・水分不足・化粧ノリ（基本水光注射優先）",
+      "ap.optC": "C. 浅い細シワ・軽いたるみ（細シワ改善優先）",
+      "ap.optD": "D. 日常の基本洗浄・落ち着かせケア",
+      "ap.botChoice": "こんにちは{name}様😊 ご希望を踏まえ、水光注射3種と専門医3名を絞り込みました。お好みでお選びください。",
+      "ap.botChoice2": "ご希望のプロジェクトと医師にチェックを入れて詳細をご確認いただけます。また、入力欄で質問だけでも結構です。",
+      "ap.selectedSummary": "{count}件選択済み",
+      "ap.interest": "「{items}」に興味があります。",
+      "ap.confirmAsk": "承知しました。どの点について詳しく知りたいですか？",
+      "ap.followBook": "プロジェクトと医師が決まりました。予約の流れを案内してください",
+      "ap.followLearn": "選んだプロジェクトと医師についてさらに詳しく知り、自分に合うか確認したい",
+      "ap.followMore": "他のプロジェクトも見てみたい",
+      "ap.sendReply": "ご質問を受け付けました。追ってご回答します。24時間ホットライン 400-888-0000 の多言語窓口もご利用いただけます。",
+      "ap.bookGreet": "承知しました！ご予約（{project}｜{doctor}｜{clinic}｜{date}受診）に基づき、予約の流れをまとめました。",
+      "ap.bk1Title": "外国人アカウントの作成",
+      "ap.bk1p1": "下の登録ボタンからアカウントを作成してください。",
+      "ap.bk1p2": "有効身分証としてパスポートを選び、実名・パスポート情報・よく使うWeChat連絡先を入力して本人確認を完了します。外国人は国内ID不要、パスポート登録で予約・受診・正式カルテ発行が可能です。",
+      "ap.bk1p3": "ご安心ください。登録情報は医療プライバシー規範を厳守し、院内カルテ・予約確認・受診履歴のみに使用。外部へ漏洩・転用せず、全行程を暗号化して保護します。",
+      "ap.bkRegister": "登録",
+      "ap.bk2Title": "公式アプリのダウンロード",
+      "ap.bk2p1": "卓正医療公式アプリをダウンロードしてください。予約・カルテ・受診情報の唯一の公式窓口で、外国人のパスポート登録に対応しています。",
+      "ap.bkDownload": "卓正医療アプリをダウンロード",
+      "ap.bk3Title": "オンライン予約で枠を確保",
+      "ap.bk3p1": "登録アカウントでログイン。「マイ – 診療記録 – 処理中」で本予約を確認できます。変更はアプリ内のAI付き添い案内に従って再予約してください。",
+      "ap.bk3p2": "予約は決済完了で即時確定し、医師の枠が確保されます。WeChat Pay・Alipay・国際カード（VISA/Mastercard）対応、事前の人民元両替は不要です。",
+      "ap.bkSpecPatient": "受診者",
+      "ap.bkSpecClinic": "医療機関",
+      "ap.bkSpecDept": "診療科",
+      "ap.bkSpecDoctor": "担当医",
+      "ap.bkSpecDate": "受診日",
+      "ap.bkDeptValue": "皮膚科 / 美容専門",
+      "ap.bk4Title": "受診通知と術前資料の受け取り",
+      "ap.bk4p1": "予約確定後、アプリの「マイ – 外国人患者付き添い」で通知と準備リストをご確認いただけます。",
+      "ap.bk4li1": "バイリンガル通知：正確な住所・営業時間・来院確認の流れ；",
+      "ap.bk4li2": "準備リスト：術前禁忌・スキンケア注意点・事前準備不要の項目。",
+      "ap.bk5Title": "クリニックへご来院",
+      "ap.bk5p1": "予約日（{date}）に卓正医療{clinic}へお越しください。原本のパスポートのみをお持ちいただき、アプリ内の「AI付き添い」またはスタッフの案内に従って受診してください。",
+      "ap.bkWechatTip": "上記はWeChatミニプログラム「卓正医療」でも完結します。中国の医療規範に不慣れな方のため、以下でもご連絡いただけます。",
+      "ap.bkContactTitle": "WeChat追加：",
+      "ap.bkEmail": "メール：enquiry@demo-health.com",
+      "ap.bkHotline": "24時間ホットライン：400-888-0000",
+      "ap.bkThanks": "卓正医療をご信頼いただきありがとうございます！",
+      "ap.ln1Title": "ブランドと会社",
+      "ap.ln1p1": "潤致（Aqualuna）は<strong>華熙生物</strong>傘下の専門美容ブランドです。華熙生物はヒアルロン酸の研究開発・製造の世界的リーダーで、完全な生体材料研究・無菌生産体制と多国特許を有しています。",
+      "ap.lnCaption": "潤致（Aqualuna）・華熙生物傘下の専門美容ブランド",
+      "ap.ln2Title": "製品資格と工程",
+      "ap.lnSpec1": "正式名称",
+      "ap.lnSpec1v": "修飾ヒアルロン酸ナトリウムゲル注射剤（愛称：潤致ベビー針）",
+      "ap.lnSpec2": "規制分類",
+      "ap.lnSpec2v": "NMPA 国家クラスIII医療機器",
+      "ap.lnSpec3": "登録番号",
+      "ap.lnSpec3v": "国械注準 20203130295",
+      "ap.lnSpec4": "規格",
+      "ap.lnSpec4v": "今回は2.0ml版を選択",
+      "ap.lnSpec5": "中心工程",
+      "ap.lnSpec5v": "HEC高効率マイクロ架橋、架橋度0.6%；粒径約200μm、浅層～中層真皮注入に適合",
+      "ap.lnSpec6": "処方構成",
+      "ap.lnSpec6v": "マイクロ架橋HA＋緩効性リドカイン塩酸塩（注入痛の軽減）",
+      "ap.lnHighlight": "中心原理：一般的な基本水光は非架橋HAで代謝が早く表面保水が中心ですが、潤致ベビー針は低マイクロ架橋で真皮に網状の保水足場を形成します。",
+      "ap.lnPoints": ["即時的にHAを補い水分量をアップ；", "持続的に水分をキープし、欧米人に多い保水力の弱さを改善；", "穏やかな機械刺激で線維芽細胞の活性を促しコラーゲン産生を補助；", "浅い乾燥小ジワをやさしく埋め、肌をなめらかに。"],
+      "ap.lnSpec7": "おすすめの方",
+      "ap.lnSpec7v": "慢性的な乾燥、化粧ノリ、季節の剥がれ、ざらつき；浅い乾燥ジワ、毛穴の目立ちがある方。",
+      "ap.lnSpec8": "想定持続",
+      "ap.lnSpec8v": "単回の効果は一般的に3–6ヶ月、代謝と術後ケアにより変動します。",
+      "ap.ln3Title": "担当医のご紹介",
+      "ap.ln3p1": "<strong>{doctor}</strong>は皮膚科修士、10年の臨床経験、英国美容進修修了・三甲公立病院出身。欧米人の肌構造と自然な審美に精通し、長く外国人を受診。低侵襲で丁寧な操作で内出血や腫れを最小化します。",
+      "ap.lnCaption2": "{doctor}・皮膚科修士・10年経験",
+      "ap.ln4Title": "客観的な限界とリスク",
+      "ap.ln4p1": "本プロジェクトは基本の長期保水と肌質改善が中心で、<strong>強い美白・アンチエイジング・填充整形の効果はありません</strong>。術後3–7日の軽い赤み、針穴の痂皮、一時的な乾きは正常な代謝で自然回復します。",
+      "ap.ln4p2": "低侵襲注射でも軽い腫れや点状内出血を100%回避できません。医師が経験で丁寧にコントロールしますが、正常な術後反応をご理解ください。",
+      "ap.ln5Title": "トランジット査証のコンプライアンスと行程への影響",
+      "ap.ln5p1": "本プロジェクトは低侵襲で縫合・再診不要、回復が短く、トランジット査証の滞在期内に完了し行程に影響しません。多くの方は目立つ腫れがなく日常・撮影に支障ありません。ごく一部の敏感肌は短期の軽い赤みがあり、回復も短いです。",
+      "ap.ln6Title": "予約枠のルール",
+      "ap.ln6p1": "李暁寧医師の枠は限られています。受診の10日前まで無料で専用枠を確保。その時点で合わなければキャンセル可能で、<strong>予約金・違約金はかかりません</strong>。",
+      "ap.lnEnd": "以上が本プランの情報です。ご自身の肌質・ご期待・行程に合わせてご判断ください。",
+      "ap.projTitle": "💧 水光注射のおすすめ",
+      "ap.proj1Name": "入門基本｜嗨体2.5",
+      "ap.proj1Price": "¥2,500–3,200/回（約€325–415）",
+      "ap.proj1Desc": "小分子HA・アミノ酸・ビタミン配合で乾燥・ざらつき・化粧ノリを改善し、バリアをやさしく修復してトーンを明るくします。痛みが少なく反応も軽く、ほぼ赤みなし。回復が極めて短く24–48時間で通常の受診・ケアが可能です。",
+      "ap.proj2Name": "長期ツヤ｜潤致ベビー針",
+      "ap.proj2Price": "¥3,200–4,000/回（約€415–520）",
+      "ap.proj2Desc": "マイクロ架橋HAが真皮に保水構造を形成し、深層保水しながら浅い小ジワを改善して肌をなめらか・ハリ・ツヤのある状態にします。効果が数ヶ月持続し、単回の長期ケアに最適です。",
+      "ap.proj3Name": "美白抗酸化｜冭活バブル針",
+      "ap.proj3Price": "¥3,500–4,000/回（約€455–520）",
+      "ap.proj3Desc": "L-カルノシンと抗酸化成分で黄色み・くすみ・赤みを改善し、肌を透明感のある状態にします。即効性があり、短期滞在の見た目アップに最適です。",
+      "ap.noteSel": "※ 最終的なプランは医師の診察で決まります。",
+      "ap.docTitle": "👩‍⚕️ おすすめの医師",
+      "ap.docDesc": "以下の医師はいずれも正規資格とバイリンガル対応を備えています。",
+      "ap.doc1Name": "李暁寧 医師｜静安国際クリニック",
+      "ap.doc1Desc": "哈爾浜医大皮膚科修士、マンチェスター大学美容進修、元三甲公立皮膚科医、10年以上、ASLMS会員。全グレードの水光注射に対応し、乾燥肌の個別プランを専門とし、低侵襲の痛みを抑え術後反応を最小化。穏やかで厳格、過度な美容を拒否。バイリンガル流暢、外国人受診経験豊富。",
+      "ap.doc2Name": "陳雨桐 医師｜浦東LCMクリニック",
+      "ap.doc2Desc": "有名医科大学臨床修士、皮膚科主治医、8年以上、抗酸化とトーン修復を専門。繊細な手技で個別の明るさプランを作成し、低侵襲で丁寧。",
+      "ap.doc3Name": "張雯 医師｜静安/浦東 轮診",
+      "ap.doc3Desc": "皮膚性病科修士、持证皮膚科医、9年以上、乾燥肌バリア修復と中胚層長期ケアを専門。安定・保守的で許容度が高く、バイリンガル対応スムーズ。",
+      "ap.moreAsk": "かしこまりました。他の美容プロジェクトを知りたいですか、それとも他の診療科を知りたいですか？",
+      "ap.moreBeauty": "他の美容プロジェクトを見る",
+      "ap.moreDept": "他の診療科を知る",
+      "ap.beautyBot": "承知しました。単回受診・短回復のご希望に合わせ、短時間の低侵襲・非侵襲ライト系プロジェクトをいくつかご紹介します。",
+      "ap.beautyTitle": "✨ ライト系美容のおすすめ",
+      "ap.beauty1Name": "フォトフェイシャル（IPL）",
+      "ap.beauty1Price": "¥1,800–3,000/回（約€235–390）",
+      "ap.beauty1Desc": "強力パルス光が表皮と浅層真皮に働き、くすみ・赤み・赤ら顔をやさしく改善しながらコラーゲンを刺激して肌をなめらかにします。非侵襲・ダウンタイムなし、直後からケア・化粧可能、行程にほぼ影響しません。",
+      "ap.beauty2Name": "ピコ秒レーザー シミ除去",
+      "ap.beauty2Price": "¥2,800–4,500/回（約€365–585）",
+      "ap.beauty2Desc": "ピコ秒レーザーがメラニンを精密に破砕し、日焼けシミ・そばかす・色むらを改善。回復が短く、一般的に3–5日で痂皮が自然脱落、単回・短期回復に最適。",
+      "ap.beauty3Name": "RFリフト（非侵襲アンチエイジング）",
+      "ap.beauty3Price": "¥4,800–8,000/回（約€625–1040）",
+      "ap.beauty3Desc": "RFエネルギーで真皮を加温しコラーゲンの産生と収縮を刺激、軽いたるみや輪郭のぼやけを改善。非侵襲で即時の引き締め感、回復が極めて短い。",
+      "ap.deptBot": "かしこまりました。以下が他の診療科です。ご相談の科をお選びください。",
+      "ap.deptRecord": "「{dept}」の受診ご希望を記録しました。入力欄で質問を続けていただくか、下の確認ボタンで予約を完了してください。",
+      "ap.depts": ["歯科（インプラント・矯正・クリーニング・根管治療等）", "美容医療（注射・フォトフェイシャル・スキンケア）", "小児科・子どもの健康（ワクチン・発育評価）", "個別健診（プレミアム定制プラン）", "皮膚科（アレルギー・湿疹・皮膚トラブル）", "眼科（視力検査・ドライアイ）", "耳鼻咽喉科（鼻炎・聴力検査等）", "理学療法・リハビリ（スポーツ障害・術後リハビリ）", "産婦人科（妊娠前検査・妊婦健診・相談）", "その他の診療"],
+      "toast.q1": "国籍または所在地を選択してください",
+      "toast.q": "まずオプションを選択してください",
+      "toast.name": "お名前を入力してください",
+      "toast.phone": "電話番号を入力してください",
+      "toast.register": "登録デモ：パスポートで本人確認してください",
+      "toast.download": "アプリダウンロードデモ：ストアで卓正医療アプリを取得してください",
+      "aichat.r1": "ページの「今すぐ予約」ボタンから予約アンケートを入力すると、15分以内に担当者からご連絡します。",
+      "aichat.r2": "Bupa、Cigna、AXA、MSHなど主要なグローバル保険会社と直接精算提携があり、受診時の立替は不要です。",
+      "aichat.r3": "外国人の方はS2私用査証を申請でき、144時間トランジット査証での受診にも対応しています。詳細は担当者へ。",
+      "aichat.r4": "医師は中・英・日・韓など多言語とAI付き添い翻訳に対応し、言語の壁はありません。",
+      "aichat.r5": "上海・北京・広州・深圳・杭州など14都市をカバー。詳細は「クリニックネットワーク」をご覧ください。",
+      "aichat.r6": "歯科（インプラント・矯正・クリーニング・根管治療等）を提供。アンケートで「歯科」をお選びください。",
+      "aichat.r7": "美容医療は注射・フォトフェイシャル・スキンケアを、持证美容医師が提供します。",
+      "aichat.r8": "プロジェクトにより価格が異なり、高品質で良心的な料金を堅持しています。詳細は予約後にお伝えします。",
+      "aichat.fallback": "ご質問ありがとうございます！具体的な診療については「今すぐ予約」からアンケートを入力するか、24時間ホットライン 400-888-0000 の多言語窓口へ。"
+    }
+  };
+  Object.keys(EXTRA).forEach(function (lang) {
+    if (I18N[lang]) Object.assign(I18N[lang], EXTRA[lang]);
+  });
+
+  // 额外词条（第二批）：AI 气泡 / AI 对话浮层
+  var EXTRA2 = {
+    zh: {
+      "aiBubble.label": "AI 陪诊",
+      "aiChat.title": "AI 陪诊助手",
+      "aiChat.status": "在线",
+      "aiChat.welcome": "您好！我是 卓正 AI 陪诊助手，欢迎了解、体验卓正高品质的医疗服务。烦请填写“就诊需求收集表”（耗时约1分钟），便于我更好的了解您的需要，为您服务。",
+      "aiChat.start": "开始填写就诊需求",
+      "aiChat.placeholder": "输入您的问题...",
+      "aiChat.send": "发送",
+      "insurance.titleHtml": "国际保险直付<br/>就医更便捷",
+      "contact.titleHtml": "预约或咨询<br/>请随时与我们联系",
+      "aiChat.history": "历史记录",
+      "aiChat.clear": "清空记录"
+    },
+    en: {
+      "aiBubble.label": "AI Care",
+      "aiChat.title": "AI Care Assistant",
+      "aiChat.status": "Online",
+      "aiChat.welcome": "Hello! I'm the Distinct Medical AI Care Assistant. Feel free to explore our premium care. Please fill in the 'Visit Needs Form' (≈1 min) so I can better understand your needs and serve you.",
+      "aiChat.start": "Start the questionnaire",
+      "aiChat.placeholder": "Type your question...",
+      "aiChat.send": "Send",
+      "insurance.titleHtml": "International Direct Billing<br/>Easier Visits",
+      "contact.titleHtml": "Book or Inquire<br/>Contact Us Anytime",
+      "aiChat.history": "History",
+      "aiChat.clear": "Clear history"
+    },
+    ja: {
+      "aiBubble.label": "AI付き添い",
+      "aiChat.title": "AI付き添いアシスタント",
+      "aiChat.status": "オンライン",
+      "aiChat.welcome": "こんにちは。卓正医療 AI付き添いアシスタントです。ぜひ当院の質の高い医療をご体験ください。「受診ニーズフォーム」（約1分）にご記入いただくと、ご希望を把握しやすくなります。",
+      "aiChat.start": "アンケートを開始",
+      "aiChat.placeholder": "ご質問を入力...",
+      "aiChat.send": "送信",
+      "insurance.titleHtml": "国際保険の直接精算<br/>受診がより便利に",
+      "contact.titleHtml": "予約・お問い合わせ<br/>いつでもご連絡を",
+      "aiChat.history": "履歴",
+      "aiChat.clear": "履歴を削除"
+    }
+  };
+  Object.keys(EXTRA2).forEach(function (lang) {
+    if (I18N[lang]) Object.assign(I18N[lang], EXTRA2[lang]);
+  });
+
+  // 额外词条（第三批）：Q8 必填标签（保留星号）
+  var EXTRA3 = {
+    zh: {
+      "quiz.q8.nameHtml": "姓名 <em>*</em>",
+      "quiz.q8.phoneHtml": "手机号 <em>*</em>"
+    },
+    en: {
+      "quiz.q8.nameHtml": "Name <em>*</em>",
+      "quiz.q8.phoneHtml": "Phone <em>*</em>"
+    },
+    ja: {
+      "quiz.q8.nameHtml": "お名前 <em>*</em>",
+      "quiz.q8.phoneHtml": "電話番号 <em>*</em>"
+    }
+  };
+  Object.keys(EXTRA3).forEach(function (lang) {
+    if (I18N[lang]) Object.assign(I18N[lang], EXTRA3[lang]);
+  });
+
+  // 额外词条（第四批）：日历月份与星期
+  var EXTRA4 = {
+    zh: {
+      "calendar.month": "{year}年{month}月",
+      "calendar.day0": "日", "calendar.day1": "一", "calendar.day2": "二", "calendar.day3": "三",
+      "calendar.day4": "四", "calendar.day5": "五", "calendar.day6": "六"
+    },
+    en: {
+      "calendar.month": "{month} / {year}",
+      "calendar.day0": "Sun", "calendar.day1": "Mon", "calendar.day2": "Tue", "calendar.day3": "Wed",
+      "calendar.day4": "Thu", "calendar.day5": "Fri", "calendar.day6": "Sat"
+    },
+    ja: {
+      "calendar.month": "{year}年{month}月",
+      "calendar.day0": "日", "calendar.day1": "月", "calendar.day2": "火", "calendar.day3": "水",
+      "calendar.day4": "木", "calendar.day5": "金", "calendar.day6": "土"
+    }
+  };
+  Object.keys(EXTRA4).forEach(function (lang) {
+    if (I18N[lang]) Object.assign(I18N[lang], EXTRA4[lang]);
+  });
+
+  // 额外词条（第五批）：AI 对话浮层历史记录标签
+  var EXTRA5 = {
+    zh: {
+      "aiChat.recordTitle": "就诊记录",
+      "aiChat.patient": "就诊人",
+      "aiChat.plan": "方案",
+      "aiChat.intent": "意向",
+      "aiChat.historyRecords": "历史就诊记录"
+    },
+    en: {
+      "aiChat.recordTitle": "Visit Record",
+      "aiChat.patient": "Patient",
+      "aiChat.plan": "Plan",
+      "aiChat.intent": "Intent",
+      "aiChat.historyRecords": "Visit History"
+    },
+    ja: {
+      "aiChat.recordTitle": "受診記録",
+      "aiChat.patient": "受診者",
+      "aiChat.plan": "プラン",
+      "aiChat.intent": "ご意向",
+      "aiChat.historyRecords": "受診履歴"
+    }
+  };
+  Object.keys(EXTRA5).forEach(function (lang) {
+    if (I18N[lang]) Object.assign(I18N[lang], EXTRA5[lang]);
+  });
+
+  // 额外词条（第六批）：AI 方案页已选摘要标签
+  var EXTRA6 = {
+    zh: {
+      "aiplan.intentProjects": "【意向项目】",
+      "aiplan.intentDoctors": "【意向医生】"
+    },
+    en: {
+      "aiplan.intentProjects": "[Projects]",
+      "aiplan.intentDoctors": "[Doctors]"
+    },
+    ja: {
+      "aiplan.intentProjects": "【ご意向プロジェクト】",
+      "aiplan.intentDoctors": "【ご意向医師】"
+    }
+  };
+  Object.keys(EXTRA6).forEach(function (lang) {
+    if (I18N[lang]) Object.assign(I18N[lang], EXTRA6[lang]);
+  });
+
+  // 额外词条（第七批）：AI 方案页"了解"开场白
+  var EXTRA7 = {
+    zh: {
+      "ap.lnGreeting": "了解你的选择！结合你的情况，我为你客观说明「{project}＋{doctor}」这套就诊方案的适配情况，所有信息如实同步，最终由你自主判断。"
+    },
+    en: {
+      "ap.lnGreeting": "Good choice! Based on your profile, here is an objective overview of the plan 「{project} + {doctor}」. All info is shared honestly — the final decision is yours."
+    },
+    ja: {
+      "ap.lnGreeting": "ご選択ありがとうございます。ご状況に合わせ、「{project}＋{doctor}」のプランの適性を客観的にご説明します。情報はすべて正直に共有し、最終判断はあなたにお任せします。"
+    }
+  };
+  Object.keys(EXTRA7).forEach(function (lang) {
+    if (I18N[lang]) Object.assign(I18N[lang], EXTRA7[lang]);
+  });
+
+  // 额外词条（第八批）：hero / about 完整标题（含 HTML 结构）
+  var EXTRA8 = {
+    zh: {
+      "hero.titleHtml": "为外籍人士提供优质便捷的<span>医疗服务</span>",
+      "about.titleHtml": "以循证医学为核心理念的<br/>国际化医疗集团"
+    },
+    en: {
+      "hero.titleHtml": "Quality and Convenient <span>Medical Services for Expats</span>",
+      "about.titleHtml": "An International Medical Group<br/>Centered on Evidence-Based Medicine"
+    },
+    ja: {
+      "hero.titleHtml": "外国人向けの質の高い便利な<span>医療サービス</span>",
+      "about.titleHtml": "根拠に基づく医療を核とする<br/>国際医療グループ"
+    }
+  };
+  Object.keys(EXTRA8).forEach(function (lang) {
+    if (I18N[lang]) Object.assign(I18N[lang], EXTRA8[lang]);
+  });
+
+  // 额外词条（第九批）：保险公司名、联系/页脚地址与页脚链接
+  var EXTRA9 = {
+    zh: {
+      "insurance.insurer.1": "MSH 万欣达",
+      "insurance.insurer.2": "Bupa 保柏",
+      "insurance.insurer.3": "Cigna 招商信诺",
+      "insurance.insurer.4": "AXA 安盛",
+      "insurance.insurer.5": "Allianz 安联",
+      "insurance.insurer.6": "平安健康",
+      "insurance.insurer.7": "GBG 环球医疗",
+      "insurance.insurer.8": "Aetna 安泰",
+      "contact.hqAddr": "上海市浦东新区世纪大道 100 号",
+      "footer.hqAddr": "上海市浦东新区世纪大道 100 号",
+      "footer.link.about": "关于我们",
+      "footer.link.network": "诊所网络",
+      "footer.link.services": "医疗服务",
+      "footer.link.insurance": "保险合作"
+    },
+    en: {
+      "insurance.insurer.1": "MSH China",
+      "insurance.insurer.2": "Bupa",
+      "insurance.insurer.3": "Cigna",
+      "insurance.insurer.4": "AXA",
+      "insurance.insurer.5": "Allianz",
+      "insurance.insurer.6": "Ping An Health",
+      "insurance.insurer.7": "GBG Global Health",
+      "insurance.insurer.8": "Aetna",
+      "contact.hqAddr": "100 Century Avenue, Pudong New Area, Shanghai",
+      "footer.hqAddr": "100 Century Avenue, Pudong New Area, Shanghai",
+      "footer.link.about": "About Us",
+      "footer.link.network": "Clinic Network",
+      "footer.link.services": "Medical Services",
+      "footer.link.insurance": "Insurance Partners"
+    },
+    ja: {
+      "insurance.insurer.1": "MSH 中国",
+      "insurance.insurer.2": "Bupa 保柏",
+      "insurance.insurer.3": "Cigna 招商信諾",
+      "insurance.insurer.4": "AXA 安盛",
+      "insurance.insurer.5": "Allianz 安聯",
+      "insurance.insurer.6": "平安健康",
+      "insurance.insurer.7": "GBG 環球医療",
+      "insurance.insurer.8": "Aetna 安泰",
+      "contact.hqAddr": "上海市浦東新区世紀大道100号",
+      "footer.hqAddr": "上海市浦東新区世紀大道100号",
+      "footer.link.about": "私たちについて",
+      "footer.link.network": "クリニックネットワーク",
+      "footer.link.services": "医療サービス",
+      "footer.link.insurance": "保険提携"
+    }
+  };
+  Object.keys(EXTRA9).forEach(function (lang) {
+    if (I18N[lang]) Object.assign(I18N[lang], EXTRA9[lang]);
+  });
+
+  var currentLang = "zh";
+
+  function getByPath(obj, path) {
+    if (obj == null) return undefined;
+    // 优先按扁平 key 查找（字典 key 本身含 "."，如 "nav.home"、"ap.greet"）
+    if (Object.prototype.hasOwnProperty.call(obj, path)) return obj[path];
+    // 兼容嵌套结构：按 "." 逐级查找
+    var parts = path.split(".");
+    var cur = obj;
+    for (var i = 0; i < parts.length; i++) {
+      if (cur == null) return undefined;
+      cur = cur[parts[i]];
+    }
+    return cur;
+  }
+
+  function t(key, vars) {
+    var dict = I18N[currentLang] || I18N.zh;
+    var val = getByPath(dict, key);
+    if (val === undefined) val = getByPath(I18N.zh, key);
+    if (typeof val === "string" && vars && typeof vars === "object") {
+      val = val.replace(/\{(\w+)\}/g, function (m, k) {
+        return vars[k] !== undefined ? vars[k] : m;
+      });
+    }
+    return val;
+  }
+
+  function applyLang(code) {
+    currentLang = (I18N[code] ? code : "zh");
+
+    // data-i18n：纯文本替换
+    document.querySelectorAll("[data-i18n]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n");
+      var val = t(key);
+      if (val !== undefined && val !== null) el.textContent = val;
+    });
+
+    // data-i18n-html：含 HTML 结构的内容
+    document.querySelectorAll("[data-i18n-html]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n-html");
+      var val = t(key);
+      if (val !== undefined && val !== null) el.innerHTML = val;
+    });
+
+    // data-i18n-placeholder：输入框占位符
+    document.querySelectorAll("[data-i18n-placeholder]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n-placeholder");
+      var val = t(key);
+      if (val !== undefined && val !== null) el.setAttribute("placeholder", val);
+    });
+
+    // data-i18n-aria-label：无障碍标签
+    document.querySelectorAll("[data-i18n-aria-label]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n-aria-label");
+      var val = t(key);
+      if (val !== undefined && val !== null) el.setAttribute("aria-label", val);
+    });
+
+    // html lang
+    document.documentElement.lang = (code === "ja" ? "ja" : (code === "en" ? "en" : "zh-CN"));
+
+    // 通知动态内容更新（轮播文案、问卷进度等）
+    document.dispatchEvent(new CustomEvent("langchange", { detail: { code: currentLang } }));
+  }
+
+  // 暴露全局接口
+  global.__t = t;
+  global.__applyLang = applyLang;
+  global.__getLang = function () { return currentLang; };
+  global.__I18N = I18N;
+})(window);

@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<script src="i18n.js"></script>
+<script>
+var out = "applyLang=" + (typeof window.__applyLang) + " | t=" + (typeof window.__t) + " | getLang=" + (window.__getLang ? window.__getLang() : "none") + " | nav.home(en)=" + (window.__t ? window.__applyLang("en"), window.__t("nav.home") : "N/A");
+document.body.textContent = out;
+</script>
+</body>
+</html>
