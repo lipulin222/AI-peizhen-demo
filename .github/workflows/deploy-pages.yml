@@ -31,10 +31,10 @@ jobs:
       - name: 配置 GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: 上传站点文件（仓库根目录即站点根目录）
+      - name: 上传站点文件（发布 AI陪诊demo 子目录）
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: 'AI陪诊demo'
 
       - name: 部署到 GitHub Pages
         id: deployment
